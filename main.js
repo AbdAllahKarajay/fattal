@@ -34,11 +34,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Update HTML direction and language
-        document.documentElement.setAttribute('lang', lang);
-        if (lang === 'ar') {
-            document.documentElement.setAttribute('dir', 'rtl');
+        const htmlRoot = document.getElementById('html-root');
+        if (htmlRoot) {
+            htmlRoot.setAttribute('lang', lang);
+            if (lang === 'ar') {
+                htmlRoot.setAttribute('dir', 'rtl');
+            } else {
+                htmlRoot.setAttribute('dir', 'ltr');
+            }
         } else {
-            document.documentElement.setAttribute('dir', 'ltr');
+            document.documentElement.setAttribute('lang', lang);
+            if (lang === 'ar') {
+                document.documentElement.setAttribute('dir', 'rtl');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+            }
         }
     }
     
@@ -220,15 +230,31 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
-    // Brand items hover effects
+    // Brand items hover effects and click functionality
     const brandItems = document.querySelectorAll('.brand-item');
     brandItems.forEach(item => {
         item.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
+            if (!this.classList.contains('clickable-brand')) {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            }
         });
         
         item.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
+            if (!this.classList.contains('clickable-brand')) {
+                this.style.transform = 'translateY(0) scale(1)';
+            }
+        });
+    });
+    
+    // Clickable brand functionality
+    const clickableBrands = document.querySelectorAll('.clickable-brand');
+    clickableBrands.forEach(brand => {
+        brand.addEventListener('click', function() {
+            const brandName = this.getAttribute('data-brand');
+            if (brandName === 'bikrati') {
+                window.location.href = 'bikrati.html';
+            }
+            // Add more brand pages here as needed
         });
     });
     

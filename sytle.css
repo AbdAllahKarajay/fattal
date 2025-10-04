@@ -705,6 +705,331 @@ body {
     direction: rtl;
 }
 
+/* Clickable Brand Styles */
+.clickable-brand {
+    cursor: pointer;
+    position: relative;
+    transition: var(--transition);
+}
+
+.clickable-brand:hover {
+    transform: translateY(-15px);
+    box-shadow: var(--shadow-heavy);
+}
+
+.brand-arrow {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: var(--transition);
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.clickable-brand:hover .brand-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Brand Page Styles */
+.brand-hero {
+    padding: 120px 0 80px;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--light-blue) 100%);
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.brand-hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.breadcrumb a:hover {
+    color: var(--secondary-color);
+}
+
+.breadcrumb span {
+    color: var(--text-light);
+}
+
+.brand-hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.brand-hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.brand-hero-description {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.brand-hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.brand-logo-large {
+    width: 300px;
+    height: 300px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-heavy);
+    text-align: center;
+}
+
+.brand-logo-large i {
+    font-size: 4rem;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.brand-logo-large h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    font-family: var(--font-arabic);
+}
+
+/* Brand Features Section */
+.brand-features {
+    padding: var(--section-padding);
+    background: var(--white);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 40px 30px;
+    background: var(--light-gray);
+    border-radius: 12px;
+    transition: var(--transition);
+}
+
+.feature-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-medium);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-color), var(--light-blue));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.feature-icon i {
+    font-size: 2rem;
+    color: var(--white);
+}
+
+.feature-item h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.feature-item p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Product Categories Section */
+.product-categories {
+    padding: var(--section-padding);
+    background: var(--light-gray);
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.category-item {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: var(--shadow-light);
+}
+
+.category-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-medium);
+}
+
+.category-image {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.category-image i {
+    font-size: 2rem;
+    color: var(--white);
+}
+
+.category-item h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.category-item p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Contact CTA Section */
+.contact-cta {
+    padding: var(--section-padding);
+    background: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-buttons .btn {
+    padding: 15px 30px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cta-buttons .btn-primary {
+    background: var(--white);
+    color: var(--primary-color);
+}
+
+.cta-buttons .btn-primary:hover {
+    background: var(--light-gray);
+    transform: translateY(-2px);
+}
+
+.cta-buttons .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.cta-buttons .btn-secondary:hover {
+    background: var(--white);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design for Brand Page */
+@media (max-width: 768px) {
+    .brand-hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .brand-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .brand-logo-large {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .brand-logo-large i {
+        font-size: 3rem;
+    }
+    
+    .brand-logo-large h2 {
+        font-size: 1.5rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 /* Smooth scrolling */
 html {
     scroll-behavior: smooth;
