@@ -38,6 +38,30 @@
     --transition-slow: 0.5s ease;
 }
 
+/* Dark theme colors */
+:root[data-theme="dark"] {
+    /* Keep primary blues but adjust for dark backgrounds */
+    --primary-color: #60a5fa;      /* Lighter blue for visibility */
+    --secondary-color: #93c5fd;    /* Lighter bright blue */
+    --accent-color: #3b82f6;       /* Medium blue */
+    --light-blue: #1e3a8a;         /* Darker blue for accents */
+    
+    /* Invert backgrounds and surfaces */
+    --cream: #1e293b;              /* Dark background */
+    --white: #0f172a;              /* Darker surface */
+    --light-gray: #334155;         /* Dark gray surface */
+    --dark-gray: #e2e8f0;          /* Light text on dark */
+    
+    /* Adjust text colors for dark mode */
+    --text-dark: #f1f5f9;          /* Light text */
+    --text-light: #94a3b8;         /* Muted light text */
+    
+    /* Adjust shadows for dark mode */
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-heavy: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
 body {
     font-family: var(--font-secondary);
     line-height: 1.7;
@@ -231,6 +255,12 @@ body {
     min-width: 300px;
     padding: 20px;
     box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.brand-card:hover {
+    transform: scale(1.02);
 }
 
 .brand-card-inner {
@@ -1162,6 +1192,7 @@ body {
     background: var(--white);
     border-radius: 12px;
     box-shadow: var(--shadow-light);
+    color: var(--text-dark);
 }
 
 .contact-icon {
@@ -1185,7 +1216,7 @@ body {
 }
 
 .contact-details p {
-    color: var(--text-light);
+    color: var(--text-dark);
     font-size: 1rem;
 }
 
@@ -1399,6 +1430,27 @@ body {
 }
 
 /* Responsive Design */
+/* Theme Toggle Button */
+.theme-toggle {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: 10px;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
 @media (max-width: 1400px) {
     .hero-title {
         font-size: 4rem;
@@ -2288,6 +2340,7 @@ html {
     gap: 15px;
     margin-bottom: 20px;
     font-size: 1rem;
+    color: var(--text-dark);
 }
 
 .contact-item:last-child {

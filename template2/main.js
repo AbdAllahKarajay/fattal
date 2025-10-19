@@ -52,6 +52,49 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Theme switching functionality
+    function initializeTheme() {
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlRoot = document.getElementById('html-root') || document.documentElement;
+        
+        // Check for saved theme preference or default to system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+        
+        // Set initial theme
+        applyTheme(currentTheme);
+        
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = htmlRoot.getAttribute('data-theme') || 'light';
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                applyTheme(newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        }
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                applyTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+        
+        function applyTheme(theme) {
+            htmlRoot.setAttribute('data-theme', theme);
+            if (themeToggle) {
+                const icon = themeToggle.querySelector('i');
+                if (icon) {
+                    icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                }
+            }
+        }
+    }
+    
+    // Initialize theme
+    initializeTheme();
+    
     // Mobile menu functionality
     const hamburger = document.getElementById('hamburger');
     const navContainer = document.querySelector('.nav-container');
@@ -389,6 +432,16 @@ document.addEventListener('DOMContentLoaded', function() {
             this.prevBtn.addEventListener('click', () => this.prevSlide());
             this.nextBtn.addEventListener('click', () => this.nextSlide());
             
+            // Add click functionality to brand cards
+            this.brandCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    this.scrollToBrandsSection();
+                });
+                
+                // Add cursor pointer style
+                card.style.cursor = 'pointer';
+            });
+            
             // Touch/swipe support
             let startX = 0;
             let startY = 0;
@@ -515,6 +568,16 @@ document.addEventListener('DOMContentLoaded', function() {
             if (this.autoPlayInterval) {
                 clearInterval(this.autoPlayInterval);
                 this.autoPlayInterval = null;
+            }
+        }
+        
+        scrollToBrandsSection() {
+            const brandsSection = document.getElementById('brands');
+            if (brandsSection) {
+                brandsSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }
         }
     }
