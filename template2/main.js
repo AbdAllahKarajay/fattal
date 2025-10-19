@@ -338,6 +338,190 @@ document.addEventListener('DOMContentLoaded', function() {
         accordion.openFirstItem();
     }
     
+    // Brands Slider functionality
+    class BrandsSlider {
+        constructor() {
+            this.sliderTrack = document.getElementById('sliderTrack');
+            this.prevBtn = document.getElementById('prevBtn');
+            this.nextBtn = document.getElementById('nextBtn');
+            this.dotsContainer = document.getElementById('sliderDots');
+            this.brandCards = document.querySelectorAll('.brand-card');
+            this.currentIndex = 0;
+            this.slidesToShow = this.getSlidesToShow();
+            this.totalSlides = this.brandCards.length;
+            this.maxIndex = Math.max(0, this.totalSlides - this.slidesToShow);
+            this.autoPlayInterval = null;
+            this.autoPlayDelay = 4000; // 4 seconds
+            
+            this.init();
+        }
+        
+        init() {
+            this.createDots();
+            this.updateSlider();
+            this.bindEvents();
+            this.startAutoPlay();
+        }
+        
+        getSlidesToShow() {
+            const width = window.innerWidth;
+            if (width <= 480) return 1;
+            if (width <= 768) return 1;
+            if (width <= 992) return 2;
+            if (width <= 1200) return 3;
+            return 4;
+        }
+        
+        createDots() {
+            this.dotsContainer.innerHTML = '';
+            const totalDots = this.maxIndex + 1;
+            
+            for (let i = 0; i < totalDots; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'slider-dot';
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => this.goToSlide(i));
+                this.dotsContainer.appendChild(dot);
+            }
+        }
+        
+        bindEvents() {
+            this.prevBtn.addEventListener('click', () => this.prevSlide());
+            this.nextBtn.addEventListener('click', () => this.nextSlide());
+            
+            // Touch/swipe support
+            let startX = 0;
+            let startY = 0;
+            let isDragging = false;
+            
+            this.sliderTrack.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                isDragging = true;
+                this.stopAutoPlay();
+            });
+            
+            this.sliderTrack.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+            });
+            
+            this.sliderTrack.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                
+                const endX = e.changedTouches[0].clientX;
+                const endY = e.changedTouches[0].clientY;
+                const diffX = startX - endX;
+                const diffY = startY - endY;
+                
+                // Only trigger if horizontal swipe is more significant than vertical
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                    if (diffX > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
+                }
+                
+                isDragging = false;
+                this.startAutoPlay();
+            });
+            
+            // Keyboard navigation
+            this.sliderTrack.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    this.prevSlide();
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    this.nextSlide();
+                }
+            });
+            
+            // Make slider focusable for keyboard navigation
+            this.sliderTrack.setAttribute('tabindex', '0');
+            
+            // Pause auto-play on hover
+            this.sliderTrack.addEventListener('mouseenter', () => this.stopAutoPlay());
+            this.sliderTrack.addEventListener('mouseleave', () => this.startAutoPlay());
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                this.slidesToShow = this.getSlidesToShow();
+                this.maxIndex = Math.max(0, this.totalSlides - this.slidesToShow);
+                this.currentIndex = Math.min(this.currentIndex, this.maxIndex);
+                this.createDots();
+                this.updateSlider();
+            });
+        }
+        
+        updateSlider() {
+            const cardWidth = 100 / this.slidesToShow;
+            const translateX = -(this.currentIndex * cardWidth);
+            this.sliderTrack.style.transform = `translateX(${translateX}%)`;
+            
+            // Update button states
+            this.prevBtn.disabled = this.currentIndex === 0;
+            this.nextBtn.disabled = this.currentIndex >= this.maxIndex;
+            
+            // Update dots
+            const dots = this.dotsContainer.querySelectorAll('.slider-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === this.currentIndex);
+            });
+        }
+        
+        goToSlide(index) {
+            this.currentIndex = Math.max(0, Math.min(index, this.maxIndex));
+            this.updateSlider();
+            this.stopAutoPlay();
+            this.startAutoPlay();
+        }
+        
+        nextSlide() {
+            if (this.currentIndex < this.maxIndex) {
+                this.currentIndex++;
+                this.updateSlider();
+            } else {
+                // Loop back to start
+                this.currentIndex = 0;
+                this.updateSlider();
+            }
+            this.stopAutoPlay();
+            this.startAutoPlay();
+        }
+        
+        prevSlide() {
+            if (this.currentIndex > 0) {
+                this.currentIndex--;
+                this.updateSlider();
+            } else {
+                // Loop to end
+                this.currentIndex = this.maxIndex;
+                this.updateSlider();
+            }
+            this.stopAutoPlay();
+            this.startAutoPlay();
+        }
+        
+        startAutoPlay() {
+            this.stopAutoPlay();
+            this.autoPlayInterval = setInterval(() => {
+                this.nextSlide();
+            }, this.autoPlayDelay);
+        }
+        
+        stopAutoPlay() {
+            if (this.autoPlayInterval) {
+                clearInterval(this.autoPlayInterval);
+                this.autoPlayInterval = null;
+            }
+        }
+    }
+    
+    // Initialize brands slider
+    const brandsSlider = new BrandsSlider();
+    
     // Clickable brand functionality
     // const clickableBrands = document.querySelectorAll('.brand-header[data-brand]');
     // clickableBrands.forEach(brand => {
