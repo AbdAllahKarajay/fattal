@@ -95,26 +95,25 @@ body {
     margin: 0 auto;
     padding: 0 60px;
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
     height: 90px;
     gap: 40px;
 }
 
-.nav-left,
+.nav-center,
 .nav-right {
     display: flex;
     align-items: center;
     gap: 40px;
 }
 
-.nav-right {
-    justify-content: flex-end;
+.nav-center {
+    justify-content: center;
 }
 
-.nav-center {
-    display: flex;
-    justify-content: center;
+.nav-right {
+    justify-content: flex-end;
 }
 
 .nav-logo {
@@ -268,6 +267,7 @@ body {
 
 .brand-card:hover {
     transform: scale(1.02);
+    box-shadow: var(--shadow-heavy);
 }
 
 .brand-card-inner {
@@ -321,6 +321,24 @@ body {
 
 .brand-card-inner:hover .brand-logo i {
     color: var(--white);
+}
+
+/* Add a subtle indicator for clickable cards */
+.brand-card:first-child::after {
+    content: "Click to learn more";
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: var(--text-light);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.brand-card:first-child:hover::after {
+    opacity: 1;
 }
 
 .brand-info {
@@ -542,7 +560,7 @@ body {
 
 .hero-container {
     max-width: 1600px;
-    margin: 0 auto;
+    margin: 60px auto 0 auto;
     padding: 0 60px;
 }
 
@@ -1476,7 +1494,7 @@ body {
         padding: 20px 40px;
     }
     
-    .nav-left,
+    .nav-center,
     .nav-right {
         justify-content: center;
         gap: 30px;
@@ -1511,7 +1529,7 @@ body {
         top: 20px;
     }
     
-    .nav-left,
+    .nav-center,
     .nav-right {
         display: none;
     }

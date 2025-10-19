@@ -1,20 +1,20 @@
 // Fattal Group Landing Page JavaScript - Magazine Style Version with Accordion
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Language switching functionality
     const languageButtons = document.querySelectorAll('.lang-btn');
     const currentLang = localStorage.getItem('selectedLanguage') || 'en';
-    
+
     // Set initial language
     setLanguage(currentLang);
-    
+
     languageButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const lang = this.getAttribute('data-lang');
             setLanguage(lang);
             localStorage.setItem('selectedLanguage', lang);
         });
     });
-    
+
     function setLanguage(lang) {
         // Update active button
         languageButtons.forEach(btn => {
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 btn.classList.add('active');
             }
         });
-        
+
         // Update text content
         const elementsWithData = document.querySelectorAll('[data-en][data-ar]');
         elementsWithData.forEach(element => {
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 element.textContent = text;
             }
         });
-        
+
         // Update HTML direction and language
         const htmlRoot = document.getElementById('html-root');
         if (htmlRoot) {
@@ -51,36 +51,36 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-    
+
     // Theme switching functionality
     function initializeTheme() {
         const themeToggle = document.getElementById('themeToggle');
         const htmlRoot = document.getElementById('html-root') || document.documentElement;
-        
+
         // Check for saved theme preference or default to system preference
         const savedTheme = localStorage.getItem('theme');
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-        
+
         // Set initial theme
         applyTheme(currentTheme);
-        
+
         if (themeToggle) {
-            themeToggle.addEventListener('click', function() {
+            themeToggle.addEventListener('click', function () {
                 const currentTheme = htmlRoot.getAttribute('data-theme') || 'light';
                 const newTheme = currentTheme === 'light' ? 'dark' : 'light';
                 applyTheme(newTheme);
                 localStorage.setItem('theme', newTheme);
             });
         }
-        
+
         // Listen for system theme changes
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
             if (!localStorage.getItem('theme')) {
                 applyTheme(e.matches ? 'dark' : 'light');
             }
         });
-        
+
         function applyTheme(theme) {
             htmlRoot.setAttribute('data-theme', theme);
             if (themeToggle) {
@@ -91,29 +91,29 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-    
+
     // Initialize theme
     initializeTheme();
-    
+
     // Mobile menu functionality
     const hamburger = document.getElementById('hamburger');
     const navContainer = document.querySelector('.nav-container');
-    
+
     if (hamburger && navContainer) {
-        hamburger.addEventListener('click', function() {
+        hamburger.addEventListener('click', function () {
             navContainer.classList.toggle('mobile-menu-active');
             hamburger.classList.toggle('active');
         });
     }
-    
+
     // Smooth scrolling for navigation links
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-            
+
             if (targetSection) {
                 const offsetTop = targetSection.offsetTop - 90; // Account for fixed navbar
                 window.scrollTo({
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     behavior: 'smooth'
                 });
             }
-            
+
             // Close mobile menu
             if (navContainer) {
                 navContainer.classList.remove('mobile-menu-active');
@@ -131,13 +131,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     // Hero buttons functionality
     const learnMoreBtn = document.querySelector('.btn-primary');
     const ourBrandsBtn = document.querySelector('.btn-secondary');
-    
+
     if (learnMoreBtn) {
-        learnMoreBtn.addEventListener('click', function() {
+        learnMoreBtn.addEventListener('click', function () {
             const aboutSection = document.querySelector('#about');
             if (aboutSection) {
                 aboutSection.scrollIntoView({
@@ -147,9 +147,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     if (ourBrandsBtn) {
-        ourBrandsBtn.addEventListener('click', function() {
+        ourBrandsBtn.addEventListener('click', function () {
             const brandsSection = document.querySelector('#brands');
             if (brandsSection) {
                 brandsSection.scrollIntoView({
@@ -159,66 +159,66 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     // Contact form functionality with floating labels
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
         const formInputs = contactForm.querySelectorAll('input, textarea');
-        
+
         formInputs.forEach(input => {
             // Handle focus events
-            input.addEventListener('focus', function() {
+            input.addEventListener('focus', function () {
                 this.parentElement.classList.add('focused');
             });
-            
-            input.addEventListener('blur', function() {
+
+            input.addEventListener('blur', function () {
                 if (!this.value) {
                     this.parentElement.classList.remove('focused');
                 }
             });
-            
+
             // Check if input has value on load
             if (input.value) {
                 input.parentElement.classList.add('focused');
             }
         });
-        
-        contactForm.addEventListener('submit', function(e) {
+
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Get form data
             const name = this.querySelector('input[type="text"]').value;
             const email = this.querySelector('input[type="email"]').value;
             const message = this.querySelector('textarea').value;
-            
+
             // Simple validation
             if (!name || !email || !message) {
                 showNotification('Please fill in all fields', 'error');
                 return;
             }
-            
+
             if (!isValidEmail(email)) {
                 showNotification('Please enter a valid email address', 'error');
                 return;
             }
-            
+
             // Simulate form submission
             showNotification('Thank you for your message! We will get back to you soon.', 'success');
             this.reset();
-            
+
             // Remove focused class from all form groups
             formInputs.forEach(input => {
                 input.parentElement.classList.remove('focused');
             });
         });
     }
-    
+
     // Email validation function
     function isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
-    
+
     // Enhanced notification system
     function showNotification(message, type = 'info') {
         // Remove existing notifications
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (existingNotification) {
             existingNotification.remove();
         }
-        
+
         // Create notification element
         const notification = document.createElement('div');
         notification.className = `notification notification-${type}`;
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <button class="notification-close">&times;</button>
             </div>
         `;
-        
+
         // Add styles
         notification.style.cssText = `
             position: fixed;
@@ -252,18 +252,18 @@ document.addEventListener('DOMContentLoaded', function() {
             transform: translateX(100%);
             transition: transform 0.3s ease;
         `;
-        
+
         // Add to page
         document.body.appendChild(notification);
-        
+
         // Animate in
         setTimeout(() => {
             notification.style.transform = 'translateX(0)';
         }, 100);
-        
+
         // Close button functionality
         const closeBtn = notification.querySelector('.notification-close');
-        closeBtn.addEventListener('click', function() {
+        closeBtn.addEventListener('click', function () {
             notification.style.transform = 'translateX(100%)';
             setTimeout(() => {
                 if (notification.parentNode) {
@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }, 300);
         });
-        
+
         // Auto remove after 5 seconds
         setTimeout(() => {
             if (notification.parentNode) {
@@ -284,24 +284,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 5000);
     }
-    
+
     // Accordion functionality
     class Accordion {
         constructor() {
             this.accordionItems = document.querySelectorAll('.brand-accordion-item');
             this.init();
         }
-        
+
         init() {
             this.accordionItems.forEach(item => {
                 const header = item.querySelector('.brand-header');
                 const content = item.querySelector('.brand-content');
                 const arrow = item.querySelector('.brand-arrow');
-                
+
                 header.addEventListener('click', () => {
                     this.toggleItem(item);
                 });
-                
+
                 // Keyboard navigation
                 header.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
@@ -309,29 +309,29 @@ document.addEventListener('DOMContentLoaded', function() {
                         this.toggleItem(item);
                     }
                 });
-                
+
                 // Make header focusable
                 header.setAttribute('tabindex', '0');
                 header.setAttribute('role', 'button');
                 header.setAttribute('aria-expanded', 'false');
-                
+
                 // Set initial state
                 content.setAttribute('aria-hidden', 'true');
             });
         }
-        
+
         toggleItem(item) {
             const isActive = item.classList.contains('active');
             const content = item.querySelector('.brand-content');
             const header = item.querySelector('.brand-header');
-            
+
             // Close all other items
             this.accordionItems.forEach(otherItem => {
                 if (otherItem !== item) {
                     this.closeItem(otherItem);
                 }
             });
-            
+
             // Toggle current item
             if (isActive) {
                 this.closeItem(item);
@@ -339,29 +339,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.openItem(item);
             }
         }
-        
+
         openItem(item) {
             const content = item.querySelector('.brand-content');
             const header = item.querySelector('.brand-header');
-            
+
             item.classList.add('active');
             header.setAttribute('aria-expanded', 'true');
             content.setAttribute('aria-hidden', 'false');
-            
+
             // Smooth height animation
             content.style.maxHeight = content.scrollHeight + 'px';
         }
-        
+
         closeItem(item) {
             const content = item.querySelector('.brand-content');
             const header = item.querySelector('.brand-header');
-            
+
             item.classList.remove('active');
             header.setAttribute('aria-expanded', 'false');
             content.setAttribute('aria-hidden', 'true');
             content.style.maxHeight = '0';
         }
-        
+
         // Open first item by default
         openFirstItem() {
             if (this.accordionItems.length > 0) {
@@ -369,10 +369,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-    
+
     // Initialize accordion
     const accordion = new Accordion();
-    
+
     // Open featured brand by default
     const featuredBrand = document.querySelector('.brand-accordion-item.featured');
     if (featuredBrand) {
@@ -380,7 +380,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         accordion.openFirstItem();
     }
-    
+
     // Brands Slider functionality
     class BrandsSlider {
         constructor() {
@@ -395,17 +395,17 @@ document.addEventListener('DOMContentLoaded', function() {
             this.maxIndex = Math.max(0, this.totalSlides - this.slidesToShow);
             this.autoPlayInterval = null;
             this.autoPlayDelay = 4000; // 4 seconds
-            
+
             this.init();
         }
-        
+
         init() {
             this.createDots();
             this.updateSlider();
             this.bindEvents();
             this.startAutoPlay();
         }
-        
+
         getSlidesToShow() {
             const width = window.innerWidth;
             if (width <= 480) return 1;
@@ -414,12 +414,16 @@ document.addEventListener('DOMContentLoaded', function() {
             if (width <= 1200) return 3;
             return 4;
         }
-        
+
         createDots() {
             this.dotsContainer.innerHTML = '';
             const totalDots = this.maxIndex + 1;
-            
-            for (let i = 0; i < totalDots; i++) {
+
+
+            let arabic = document.documentElement.getAttribute('lang') === 'ar';
+            let start = arabic ? totalDots - 1 : 0;
+            let end = arabic ? 0 : totalDots - 1;
+            for (let i = start; i !== end; i += arabic ? -1 : 1) {
                 const dot = document.createElement('button');
                 dot.className = 'slider-dot';
                 if (i === 0) dot.classList.add('active');
@@ -427,46 +431,52 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.dotsContainer.appendChild(dot);
             }
         }
-        
+
         bindEvents() {
             this.prevBtn.addEventListener('click', () => this.prevSlide());
             this.nextBtn.addEventListener('click', () => this.nextSlide());
-            
+
             // Add click functionality to brand cards
-            this.brandCards.forEach(card => {
+            this.brandCards.forEach((card, index) => {
                 card.addEventListener('click', () => {
-                    this.scrollToBrandsSection();
+                    if (index === 0) {
+                        // First card (Bikrati) - navigate to bikrati.html
+                        window.location.href = 'bikrati.html';
+                    } else {
+                        // Other cards - show placeholder message
+                        showNotification('This brand page is coming soon!', 'info');
+                    }
                 });
-                
+
                 // Add cursor pointer style
                 card.style.cursor = 'pointer';
             });
-            
+
             // Touch/swipe support
             let startX = 0;
             let startY = 0;
             let isDragging = false;
-            
+
             this.sliderTrack.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].clientX;
                 startY = e.touches[0].clientY;
                 isDragging = true;
                 this.stopAutoPlay();
             });
-            
+
             this.sliderTrack.addEventListener('touchmove', (e) => {
                 if (!isDragging) return;
                 e.preventDefault();
             });
-            
+
             this.sliderTrack.addEventListener('touchend', (e) => {
                 if (!isDragging) return;
-                
+
                 const endX = e.changedTouches[0].clientX;
                 const endY = e.changedTouches[0].clientY;
                 const diffX = startX - endX;
                 const diffY = startY - endY;
-                
+
                 // Only trigger if horizontal swipe is more significant than vertical
                 if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
                     if (diffX > 0) {
@@ -475,11 +485,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         this.prevSlide();
                     }
                 }
-                
+
                 isDragging = false;
                 this.startAutoPlay();
             });
-            
+
             // Keyboard navigation
             this.sliderTrack.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowLeft') {
@@ -490,14 +500,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     this.nextSlide();
                 }
             });
-            
+
             // Make slider focusable for keyboard navigation
             this.sliderTrack.setAttribute('tabindex', '0');
-            
+
             // Pause auto-play on hover
             this.sliderTrack.addEventListener('mouseenter', () => this.stopAutoPlay());
             this.sliderTrack.addEventListener('mouseleave', () => this.startAutoPlay());
-            
+
             // Handle window resize
             window.addEventListener('resize', () => {
                 this.slidesToShow = this.getSlidesToShow();
@@ -507,31 +517,45 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.updateSlider();
             });
         }
-        
+
         updateSlider() {
             const cardWidth = 100 / this.slidesToShow;
+            let arabic = document.documentElement.getAttribute('lang') === 'ar';
             const translateX = -(this.currentIndex * cardWidth);
-            this.sliderTrack.style.transform = `translateX(${translateX}%)`;
-            
+            this.sliderTrack.style.transform = arabic ? `translateX(${-translateX}%)` : `translateX(${translateX}%)`;
             // Update button states
-            this.prevBtn.disabled = this.currentIndex === 0;
-            this.nextBtn.disabled = this.currentIndex >= this.maxIndex;
-            
+            this.prevBtn.disabled = arabic ? this.currentIndex >= this.maxIndex : this.currentIndex === 0;
+            this.nextBtn.disabled = arabic ? this.currentIndex === 0 : this.currentIndex >= this.maxIndex;
+
             // Update dots
             const dots = this.dotsContainer.querySelectorAll('.slider-dot');
             dots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === this.currentIndex);
             });
         }
-        
+
         goToSlide(index) {
             this.currentIndex = Math.max(0, Math.min(index, this.maxIndex));
             this.updateSlider();
             this.stopAutoPlay();
             this.startAutoPlay();
         }
-        
+
         nextSlide() {
+            let arabic = document.documentElement.getAttribute('lang') === 'ar';
+            if (arabic) {
+                if (this.currentIndex > 0) {
+                    this.currentIndex--;
+                    this.updateSlider();
+                } else {
+                    // Loop to end
+                    this.currentIndex = this.maxIndex;
+                    this.updateSlider();
+                }
+                this.stopAutoPlay();
+                this.startAutoPlay();
+                return;
+            }
             if (this.currentIndex < this.maxIndex) {
                 this.currentIndex++;
                 this.updateSlider();
@@ -543,8 +567,22 @@ document.addEventListener('DOMContentLoaded', function() {
             this.stopAutoPlay();
             this.startAutoPlay();
         }
-        
+
         prevSlide() {
+            let arabic = document.documentElement.getAttribute('lang') === 'ar';
+            if (arabic) {
+                if (this.currentIndex < this.maxIndex) {
+                    this.currentIndex++;
+                    this.updateSlider();
+                } else {
+                    // Loop back to start
+                    this.currentIndex = 0;
+                    this.updateSlider();
+                }
+                this.stopAutoPlay();
+                this.startAutoPlay();
+                return;
+            }
             if (this.currentIndex > 0) {
                 this.currentIndex--;
                 this.updateSlider();
@@ -556,21 +594,21 @@ document.addEventListener('DOMContentLoaded', function() {
             this.stopAutoPlay();
             this.startAutoPlay();
         }
-        
+
         startAutoPlay() {
             this.stopAutoPlay();
             this.autoPlayInterval = setInterval(() => {
                 this.nextSlide();
             }, this.autoPlayDelay);
         }
-        
+
         stopAutoPlay() {
             if (this.autoPlayInterval) {
                 clearInterval(this.autoPlayInterval);
                 this.autoPlayInterval = null;
             }
         }
-        
+
         scrollToBrandsSection() {
             const brandsSection = document.getElementById('brands');
             if (brandsSection) {
@@ -581,10 +619,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-    
+
     // Initialize brands slider
     const brandsSlider = new BrandsSlider();
-    
+
     // Clickable brand functionality
     // const clickableBrands = document.querySelectorAll('.brand-header[data-brand]');
     // clickableBrands.forEach(brand => {
@@ -596,11 +634,11 @@ document.addEventListener('DOMContentLoaded', function() {
     //         // Add more brand pages here as needed
     //     });
     // });
-    
+
     // Newsletter form functionality
     const newsletterForm = document.querySelector('.newsletter-form');
     if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
+        newsletterForm.addEventListener('submit', function (e) {
             e.preventDefault();
             const email = this.querySelector('input[type="email"]').value;
             if (email && isValidEmail(email)) {
@@ -611,9 +649,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     // Keyboard navigation support
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         // ESC key closes mobile menu
         if (e.key === 'Escape') {
             if (navContainer) {
@@ -624,27 +662,27 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-    
+
     // Enhanced focus styles for accessibility
     const focusableElements = document.querySelectorAll('a, button, input, textarea, .brand-header');
     focusableElements.forEach(element => {
-        element.addEventListener('focus', function() {
+        element.addEventListener('focus', function () {
             this.style.outline = '2px solid #60a5fa';
             this.style.outlineOffset = '2px';
         });
-        
-        element.addEventListener('blur', function() {
+
+        element.addEventListener('blur', function () {
             this.style.outline = 'none';
             this.style.outlineOffset = '0';
         });
     });
-    
+
     // Scroll animations
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -653,7 +691,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }, observerOptions);
-    
+
     // Observe elements for scroll animations
     const animatedElements = document.querySelectorAll('.brand-accordion-item, .callout-box, .contact-item, .stat-highlight');
     animatedElements.forEach(el => {
@@ -662,13 +700,13 @@ document.addEventListener('DOMContentLoaded', function() {
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
-    
+
     // Navbar scroll effect
     let lastScrollTop = 0;
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const navbar = document.querySelector('.navbar');
-        
+
         if (scrollTop > lastScrollTop && scrollTop > 100) {
             // Scrolling down
             navbar.style.transform = 'translateY(-100%)';
@@ -676,24 +714,24 @@ document.addEventListener('DOMContentLoaded', function() {
             // Scrolling up
             navbar.style.transform = 'translateY(0)';
         }
-        
+
         lastScrollTop = scrollTop;
     });
-    
+
     // Magazine-style hover effects
     const magazineElements = document.querySelectorAll('.callout-box, .contact-item, .stat-highlight');
     magazineElements.forEach(element => {
-        element.addEventListener('mouseenter', function() {
+        element.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-5px)';
             this.style.boxShadow = 'var(--shadow-heavy)';
         });
-        
-        element.addEventListener('mouseleave', function() {
+
+        element.addEventListener('mouseleave', function () {
             this.style.transform = 'translateY(0)';
             this.style.boxShadow = 'var(--shadow-light)';
         });
     });
-    
+
     // Console welcome message
     console.log('%cFattal Group Website - Magazine Style Version', 'color: #1e3a8a; font-size: 20px; font-weight: bold;');
     console.log('%cBringing Quality Food to Every Table Since 1965', 'color: #3b82f6; font-size: 14px;');
