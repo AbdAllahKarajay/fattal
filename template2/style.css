@@ -62,6 +62,12 @@
     --shadow-heavy: 0 8px 32px rgba(0, 0, 0, 0.6);
 }
 
+/* Dark theme navbar specific styles */
+:root[data-theme="dark"] .navbar {
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom: 1px solid var(--primary-color);
+}
+
 body {
     font-family: var(--font-secondary);
     line-height: 1.7;
@@ -76,10 +82,11 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--white);
     backdrop-filter: blur(10px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(30, 58, 138, 0.1);
+    border-bottom: 1px solid var(--primary-color);
+    opacity: 0.95;
     transition: var(--transition-medium);
 }
 
