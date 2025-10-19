@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Brand | Fattal Group</title>
+    <link rel="stylesheet" href="sytle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="Fattal Group Logo" class="logo">
+                <span class="brand-name">Fattal Group</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a>
+                <a href="index.html#about" class="nav-link" data-en="About" data-ar="من نحن">About</a>
+                <a href="index.html#brands" class="nav-link" data-en="Brands" data-ar="العلامات التجارية">Brands</a>
+                <a href="index.html#contact" class="nav-link" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ar">عربي</button>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Brand Hero Section -->
+    <section class="brand-hero">
+        <div class="container">
+            <div class="brand-hero-content">
+                <div class="brand-hero-text">
+                    <div class="breadcrumb">
+                        <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+                        <span>/</span>
+                        <a href="index.html#brands" data-en="Brands" data-ar="العلامات التجارية">Brands</a>
+                        <span>/</span>
+                        <span id="breadcrumb-brand" data-en="" data-ar=""></span>
+                    </div>
+                    <h1 class="brand-hero-title" id="brand-title" data-en="" data-ar="">Loading...</h1>
+                    <p class="brand-hero-subtitle" id="brand-tagline" data-en="" data-ar="">Loading...</p>
+                    <p class="brand-hero-description" id="brand-description" data-en="" data-ar="">
+                        Loading...
+                    </p>
+                </div>
+                <div class="brand-hero-image">
+                    <div class="brand-logo-large" id="brand-logo-large">
+                        <!-- Dynamic logo will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Features Section -->
+    <section class="brand-features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="features-title" data-en="Why Choose This Brand?" data-ar="لماذا تختار هذه العلامة التجارية؟">Why Choose This Brand?</h2>
+                <p class="section-subtitle" id="features-subtitle" data-en="Quality ingredients, traditional recipes, modern standards" data-ar="مكونات عالية الجودة، وصفات تقليدية، معايير حديثة">Quality ingredients, traditional recipes, modern standards</p>
+            </div>
+            <div class="features-grid" id="brand-features">
+                <!-- Dynamic features will be inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Categories Section -->
+    <section class="product-categories">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-en="Our Product Range" data-ar="مجموعة منتجاتنا">Our Product Range</h2>
+                <p class="section-subtitle" data-en="A comprehensive selection of premium products" data-ar="مجموعة شاملة من المنتجات المتميزة">A comprehensive selection of premium products</p>
+            </div>
+            <div class="categories-grid" id="product-categories">
+                <!-- Dynamic product categories will be inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section class="contact-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 id="cta-title" data-en="Interested in Our Products?" data-ar="مهتم بمنتجاتنا؟">Interested in Our Products?</h2>
+                <p id="cta-description" data-en="Contact us to learn more about our products and how we can serve your needs." data-ar="اتصل بنا لمعرفة المزيد عن منتجاتنا وكيف يمكننا خدمة احتياجاتك.">Contact us to learn more about our products and how we can serve your needs.</p>
+                <div class="cta-buttons">
+                    <a href="index.html#contact" class="btn btn-primary" data-en="Contact Us" data-ar="اتصل بنا">Contact Us</a>
+                    <a href="index.html#brands" class="btn btn-secondary" data-en="View All Brands" data-ar="عرض جميع العلامات التجارية">View All Brands</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Fattal Group Logo" class="logo">
+                    <span class="brand-name">Fattal Group</span>
+                </div>
+                <div class="footer-text">
+                    <p data-en="Bringing Quality Food to Every Table Since 1965" data-ar="منذ عام 1965 ، نضع الغذاء عالي الجودة على كل مائدة">Bringing Quality Food to Every Table Since 1965</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Fattal Group. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="brands-data.js"></script>
+    <script src="brand-loader.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

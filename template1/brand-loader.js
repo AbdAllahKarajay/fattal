@@ -52,40 +52,11 @@ function loadBrandContent(brandData, language) {
     // Update brand logo
     updateBrandLogo(brandData);
     
-    // Update founded year
-    document.getElementById('brand-founded').textContent = `Since ${brandData.stats.founded}`;
-    document.getElementById('brand-founded').setAttribute('data-en', `Since ${brandData.stats.founded}`);
-    document.getElementById('brand-founded').setAttribute('data-ar', `منذ ${brandData.stats.founded}`);
-    
-    // Update highlights
-    updateBrandHighlights(brandData, language);
-    
-    // Update quote
-    document.getElementById('brand-quote-text').textContent = brandData.quote.text[language];
-    document.getElementById('brand-quote-text').setAttribute('data-en', brandData.quote.text.en);
-    document.getElementById('brand-quote-text').setAttribute('data-ar', brandData.quote.text.ar);
-    
-    document.getElementById('brand-quote-author').textContent = brandData.quote.author[language];
-    document.getElementById('brand-quote-author').setAttribute('data-en', brandData.quote.author.en);
-    document.getElementById('brand-quote-author').setAttribute('data-ar', brandData.quote.author.ar);
-    
     // Update features
     updateBrandFeatures(brandData, language);
     
-    // Update statistics
-    document.getElementById('stat-years').textContent = brandData.stats.years;
-    document.getElementById('stat-products').textContent = brandData.stats.products;
-    document.getElementById('stat-customers').textContent = brandData.stats.customers;
-    
     // Update product categories
     updateProductCategories(brandData, language);
-    
-    // Update contact information
-    document.getElementById('contact-phone').textContent = brandData.contact.phone;
-    document.getElementById('contact-email').textContent = brandData.contact.email;
-    document.getElementById('contact-hours').textContent = brandData.contact.hours[language];
-    document.getElementById('contact-hours').setAttribute('data-en', brandData.contact.hours.en);
-    document.getElementById('contact-hours').setAttribute('data-ar', brandData.contact.hours.ar);
     
     // Update CTA section
     updateCTASection(brandData, language);
@@ -103,31 +74,12 @@ function updateBrandLogo(brandData) {
     } else {
         // Image logo
         logoContainer.innerHTML = `
-            <img src="${brandData.logo}" alt="${brandData.name.en}" style="width: 80px; height: 80px; margin-bottom: 20px;" />
+            <img src="${brandData.logo}" alt="${brandData.name.en}" style="width: 100px; height: 100px; margin-bottom: 20px;" />
             <h2>${brandData.name[document.documentElement.getAttribute('lang') || 'en']}</h2>
         `;
     }
 }
 
-function updateBrandHighlights(brandData, language) {
-    const highlightsContainer = document.getElementById('brand-highlights');
-    highlightsContainer.innerHTML = '';
-    
-    brandData.highlights.forEach(highlight => {
-        const highlightElement = document.createElement('div');
-        highlightElement.className = 'highlight-item';
-        highlightElement.innerHTML = `
-            <div class="highlight-icon">
-                <i class="${highlight.icon}"></i>
-            </div>
-            <div class="highlight-text">
-                <h4 data-en="${highlight.title.en}" data-ar="${highlight.title.ar}">${highlight.title[language]}</h4>
-                <p data-en="${highlight.description.en}" data-ar="${highlight.description.ar}">${highlight.description[language]}</p>
-            </div>
-        `;
-        highlightsContainer.appendChild(highlightElement);
-    });
-}
 
 function updateBrandFeatures(brandData, language) {
     const featuresContainer = document.getElementById('brand-features');

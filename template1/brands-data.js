@@ -1561,6 +1561,229 @@ const brandsData = {
             }
         }
     },
+    'packaging-world': {
+        id: 'packaging-world',
+        name: {
+            en: 'Packaging World',
+            ar: 'عالم التغليف'
+        },
+        tagline: {
+            en: 'Packaging Solutions',
+            ar: 'حلول التغليف'
+        },
+        description: {
+            en: 'Innovative packaging solutions that protect and preserve your products while maintaining environmental responsibility. Packaging World offers comprehensive packaging services for all your business needs.',
+            ar: 'حلول تغليف مبتكرة تحمي وتحافظ على منتجاتك مع الحفاظ على المسؤولية البيئية. يقدم عالم التغليف خدمات تغليف شاملة لجميع احتياجات عملك.'
+        },
+        logo: 'fas fa-box',
+        highlights: [
+            {
+                icon: 'fas fa-recycle',
+                title: {
+                    en: 'Eco-Friendly',
+                    ar: 'صديق للبيئة'
+                },
+                description: {
+                    en: 'Sustainable materials',
+                    ar: 'مواد مستدامة'
+                }
+            },
+            {
+                icon: 'fas fa-shield-alt',
+                title: {
+                    en: 'Protection',
+                    ar: 'حماية'
+                },
+                description: {
+                    en: 'Maximum product safety',
+                    ar: 'أقصى حماية للمنتج'
+                }
+            },
+            {
+                icon: 'fas fa-cog',
+                title: {
+                    en: 'Custom Solutions',
+                    ar: 'حلول مخصصة'
+                },
+                description: {
+                    en: 'Tailored to your needs',
+                    ar: 'مصممة لاحتياجاتك'
+                }
+            }
+        ],
+        quote: {
+            text: {
+                en: 'Protecting your products with innovative packaging solutions.',
+                ar: 'حماية منتجاتك بحلول تغليف مبتكرة.'
+            },
+            author: {
+                en: '— Packaging World Mission',
+                ar: '— مهمة عالم التغليف'
+            }
+        },
+        features: [
+            {
+                icon: 'fas fa-leaf',
+                title: {
+                    en: 'Sustainable Materials',
+                    ar: 'مواد مستدامة'
+                },
+                description: {
+                    en: 'We use eco-friendly and recyclable materials to minimize environmental impact while maintaining quality.',
+                    ar: 'نستخدم مواد صديقة للبيئة وقابلة لإعادة التدوير لتقليل التأثير البيئي مع الحفاظ على الجودة.'
+                }
+            },
+            {
+                icon: 'fas fa-tools',
+                title: {
+                    en: 'Custom Design',
+                    ar: 'تصميم مخصص'
+                },
+                description: {
+                    en: 'Our team creates custom packaging solutions tailored to your specific product requirements and brand identity.',
+                    ar: 'فريقنا يخلق حلول تغليف مخصصة مصممة خصيصاً لمتطلبات منتجك وهويتك التجارية.'
+                }
+            },
+            {
+                icon: 'fas fa-shipping-fast',
+                title: {
+                    en: 'Fast Delivery',
+                    ar: 'توصيل سريع'
+                },
+                description: {
+                    en: 'Quick turnaround times ensure your packaging needs are met without delaying your production schedule.',
+                    ar: 'أوقات استجابة سريعة تضمن تلبية احتياجات التغليف دون تأخير جدول الإنتاج.'
+                }
+            },
+            {
+                icon: 'fas fa-award',
+                title: {
+                    en: 'Quality Assurance',
+                    ar: 'ضمان الجودة'
+                },
+                description: {
+                    en: 'Rigorous testing ensures every packaging solution meets the highest standards for durability and protection.',
+                    ar: 'الاختبارات الصارمة تضمن أن كل حل تغليف يلبي أعلى معايير المتانة والحماية.'
+                }
+            }
+        ],
+        productCategories: [
+            {
+                icon: 'fas fa-box',
+                title: {
+                    en: 'Cardboard Packaging',
+                    ar: 'تغليف كرتوني'
+                },
+                description: {
+                    en: 'Durable cardboard solutions for various products',
+                    ar: 'حلول كرتونية متينة لمنتجات متنوعة'
+                },
+                items: [
+                    {
+                        en: 'Shipping Boxes',
+                        ar: 'صناديق شحن'
+                    },
+                    {
+                        en: 'Product Boxes',
+                        ar: 'صناديق منتجات'
+                    },
+                    {
+                        en: 'Display Boxes',
+                        ar: 'صناديق عرض'
+                    }
+                ]
+            },
+            {
+                icon: 'fas fa-layer-group',
+                title: {
+                    en: 'Flexible Packaging',
+                    ar: 'تغليف مرن'
+                },
+                description: {
+                    en: 'Flexible materials for food and consumer goods',
+                    ar: 'مواد مرنة للأغذية والسلع الاستهلاكية'
+                },
+                items: [
+                    {
+                        en: 'Food Bags',
+                        ar: 'أكياس طعام'
+                    },
+                    {
+                        en: 'Protective Wraps',
+                        ar: 'أغلفة واقية'
+                    },
+                    {
+                        en: 'Sealable Pouches',
+                        ar: 'أكياس قابلة للإغلاق'
+                    }
+                ]
+            },
+            {
+                icon: 'fas fa-cube',
+                title: {
+                    en: 'Plastic Solutions',
+                    ar: 'حلول بلاستيكية'
+                },
+                description: {
+                    en: 'Durable plastic packaging options',
+                    ar: 'خيارات تغليف بلاستيكية متينة'
+                },
+                items: [
+                    {
+                        en: 'Containers',
+                        ar: 'حاويات'
+                    },
+                    {
+                        en: 'Bottles & Jars',
+                        ar: 'زجاجات ومرطبان'
+                    },
+                    {
+                        en: 'Protective Cases',
+                        ar: 'حالات واقية'
+                    }
+                ]
+            },
+            {
+                icon: 'fas fa-gift',
+                title: {
+                    en: 'Specialty Packaging',
+                    ar: 'تغليف خاص'
+                },
+                description: {
+                    en: 'Custom solutions for special requirements',
+                    ar: 'حلول مخصصة للمتطلبات الخاصة'
+                },
+                items: [
+                    {
+                        en: 'Gift Boxes',
+                        ar: 'صناديق هدايا'
+                    },
+                    {
+                        en: 'Luxury Packaging',
+                        ar: 'تغليف فاخر'
+                    },
+                    {
+                        en: 'Promotional Items',
+                        ar: 'عناصر ترويجية'
+                    }
+                ]
+            }
+        ],
+        stats: {
+            years: '12+',
+            products: '150+',
+            customers: '300+',
+            founded: '2012'
+        },
+        contact: {
+            phone: '+963 11 123 4575',
+            email: 'packagingworld@fattalgroup.com',
+            hours: {
+                en: 'Mon-Fri: 8AM-6PM',
+                ar: 'الاثنين-الجمعة: 8ص-6م'
+            }
+        }
+    },
     'vita-duro': {
         id: 'vita-duro',
         name: {
