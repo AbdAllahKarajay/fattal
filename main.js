@@ -52,6 +52,49 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Theme switching functionality
+    function initializeTheme() {
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlRoot = document.getElementById('html-root') || document.documentElement;
+        
+        // Check for saved theme preference or default to system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+        
+        // Set initial theme
+        applyTheme(currentTheme);
+        
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = htmlRoot.getAttribute('data-theme') || 'light';
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                applyTheme(newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        }
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                applyTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+        
+        function applyTheme(theme) {
+            htmlRoot.setAttribute('data-theme', theme);
+            if (themeToggle) {
+                const icon = themeToggle.querySelector('i');
+                if (icon) {
+                    icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                }
+            }
+        }
+    }
+    
+    // Initialize theme
+    initializeTheme();
+    
     // Mobile menu functionality
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
@@ -76,8 +119,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Smooth scrolling for navigation links
-    navLinks.forEach(link => {
+    // Smooth scrolling for navigation links (only hash links)
+    const hashLinks = document.querySelectorAll('.nav-link[href^="#"]');
+    hashLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
@@ -206,14 +250,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Clickable brand functionality
     const clickableBrands = document.querySelectorAll('.clickable-brand');
-    clickableBrands.forEach(brand => {
+    const brandIds = ['bikrati', 'delovood', 'fattal-food', 'ingredient-world', 'packaging-world', 'khayrat-blady', 'fattal-dairy', 'delobar', 'vita-duro'];
+    
+    clickableBrands.forEach((brand, index) => {
         brand.addEventListener('click', function() {
-            const brandName = this.getAttribute('data-brand');
-            if (brandName === 'bikrati') {
-                window.location.href = 'bikrati.html';
+            const brandId = brandIds[index];
+            if (brandId) {
+                // Navigate to generic brand page with brand ID
+                window.location.href = `brand.html?id=${brandId}`;
             }
-            // Add more brand pages here as needed
         });
+        
+        // Add cursor pointer style
+        brand.style.cursor = 'pointer';
     });
     
     // Keyboard navigation support
