@@ -605,6 +605,7 @@ body {
         text-align: center;
         box-shadow: var(--shadow-medium);
         padding: 20px 0;
+        transition: left 0.3s ease, right 0.3s ease;
     }
     
     .nav-menu.active {
@@ -695,6 +696,17 @@ body {
 
 [dir="rtl"] .footer-content {
     direction: rtl;
+}
+
+/* Off-canvas RTL behavior on mobile: slide in from the right */
+@media (max-width: 768px) {
+    [dir="rtl"] .nav-menu {
+        right: -100%;
+        left: auto;
+    }
+    [dir="rtl"] .nav-menu.active {
+        right: 0;
+    }
 }
 
 /* Clickable Brand Styles */
