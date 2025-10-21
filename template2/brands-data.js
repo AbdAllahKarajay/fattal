@@ -683,7 +683,8 @@ const brandsData = {
             en: 'Premium ingredients sourced from around the world to enhance your culinary experience. Ingredient World brings you the finest global ingredients to elevate your cooking and baking to new heights.',
             ar: 'مكونات متميزة مصدرة من جميع أنحاء العالم لتعزيز تجربتك الطهوية. يجلب لك عالم المواد أجود المكونات العالمية لرفع مستوى طبخك وخبزك إلى آفاق جديدة.'
         },
-        logo: '../ماركاتنا/Ingredient world - logo.svg',
+        logo: 'fas fa-seedling',
+        // logo: '../ماركاتنا/Ingredient world - logo.svg',
         highlights: [
             {
                 icon: 'fas fa-globe',
