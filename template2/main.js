@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // Language switching functionality
     const languageButtons = document.querySelectorAll('.lang-btn');
     const currentLang = localStorage.getItem('selectedLanguage') || 'en';
-    
+
     // Set initial language
     setLanguage(currentLang);
-    
+
     languageButtons.forEach(button => {
         button.addEventListener('click', function () {
             const lang = this.getAttribute('data-lang');
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('selectedLanguage', lang);
         });
     });
-    
+
     function setLanguage(lang) {
         // Update active button
         languageButtons.forEach(btn => {
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 btn.classList.add('active');
             }
         });
-        
+
         // Update text content
         const elementsWithData = document.querySelectorAll('[data-en][data-ar]');
         elementsWithData.forEach(element => {
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 element.textContent = text;
             }
         });
-        
+
         // Update HTML direction and language
         const htmlRoot = document.getElementById('html-root');
         if (htmlRoot) {
@@ -51,20 +51,20 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
-    
+
     // Theme switching functionality
     function initializeTheme() {
         const themeToggle = document.getElementById('themeToggle');
         const htmlRoot = document.getElementById('html-root') || document.documentElement;
-        
+
         // Check for saved theme preference or default to system preference
         const savedTheme = localStorage.getItem('theme');
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-        
+
         // Set initial theme
         applyTheme(currentTheme);
-        
+
         if (themeToggle) {
             themeToggle.addEventListener('click', function () {
                 const currentTheme = htmlRoot.getAttribute('data-theme') || 'light';
@@ -73,14 +73,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 localStorage.setItem('theme', newTheme);
             });
         }
-        
+
         // Listen for system theme changes
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
             if (!localStorage.getItem('theme')) {
                 applyTheme(e.matches ? 'dark' : 'light');
             }
         });
-        
+
         function applyTheme(theme) {
             htmlRoot.setAttribute('data-theme', theme);
             if (themeToggle) {
@@ -91,17 +91,17 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
-    
+
     // Initialize theme
     initializeTheme();
-    
+
     // Mobile drawer functionality
     const hamburger = document.getElementById('hamburger');
     const mobileDrawer = document.getElementById('mobileDrawer');
     const drawerOverlay = document.getElementById('drawerOverlay');
     const drawerClose = document.getElementById('drawerClose');
     const drawerThemeToggle = document.getElementById('drawerThemeToggle');
-    
+
     // Open drawer
     if (hamburger && mobileDrawer) {
         hamburger.addEventListener('click', function () {
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
         });
     }
-    
+
     // Close drawer functions
     function closeDrawer() {
         if (mobileDrawer) {
@@ -117,30 +117,30 @@ document.addEventListener('DOMContentLoaded', function () {
             document.body.style.overflow = ''; // Restore scrolling
         }
     }
-    
+
     // Close drawer on overlay click
     if (drawerOverlay) {
         drawerOverlay.addEventListener('click', closeDrawer);
     }
-    
+
     // Close drawer on close button click
     if (drawerClose) {
         drawerClose.addEventListener('click', closeDrawer);
     }
-    
+
     // Close drawer on escape key
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && mobileDrawer && mobileDrawer.classList.contains('active')) {
             closeDrawer();
         }
     });
-    
+
     // Close drawer when clicking on navigation links
     const drawerLinks = document.querySelectorAll('.drawer-link');
     drawerLinks.forEach(link => {
         link.addEventListener('click', closeDrawer);
     });
-    
+
     // Drawer theme toggle functionality
     if (drawerThemeToggle) {
         drawerThemeToggle.addEventListener('click', function () {
@@ -150,18 +150,18 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('theme', newTheme);
         });
     }
-    
+
     // Sync drawer theme toggle with main theme toggle
     function syncThemeToggles() {
         const mainThemeToggle = document.getElementById('themeToggle');
         const drawerThemeToggle = document.getElementById('drawerThemeToggle');
-        
+
         if (mainThemeToggle && drawerThemeToggle) {
             const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
             const mainIcon = mainThemeToggle.querySelector('i');
             const drawerIcon = drawerThemeToggle.querySelector('i');
             const drawerText = drawerThemeToggle.querySelector('span');
-            
+
             if (mainIcon) {
                 mainIcon.className = currentTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
             }
@@ -173,13 +173,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
-    
+
     // Update theme toggle function to sync both toggles
     function applyTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
         syncThemeToggles();
     }
-    
+
     // Smooth scrolling for navigation links (only hash links)
     const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
     navLinks.forEach(link => {
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-            
+
             if (targetSection) {
                 const offsetTop = targetSection.offsetTop - 90; // Account for fixed navbar
                 window.scrollTo({
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     behavior: 'smooth'
                 });
             }
-            
+
             // Close mobile menu
             if (navContainer) {
                 navContainer.classList.remove('mobile-menu-active');
@@ -205,11 +205,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-    
+
     // Hero buttons functionality
     const learnMoreBtn = document.querySelector('.btn-primary');
     const ourBrandsBtn = document.querySelector('.btn-secondary');
-    
+
     if (learnMoreBtn) {
         learnMoreBtn.addEventListener('click', function () {
             const aboutSection = document.querySelector('#about');
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-    
+
     if (ourBrandsBtn) {
         ourBrandsBtn.addEventListener('click', function () {
             const brandsSection = document.querySelector('#brands');
@@ -233,66 +233,66 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-    
+
     // Contact form functionality with floating labels
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
         const formInputs = contactForm.querySelectorAll('input, textarea');
-        
+
         formInputs.forEach(input => {
             // Handle focus events
             input.addEventListener('focus', function () {
                 this.parentElement.classList.add('focused');
             });
-            
+
             input.addEventListener('blur', function () {
                 if (!this.value) {
                     this.parentElement.classList.remove('focused');
                 }
             });
-            
+
             // Check if input has value on load
             if (input.value) {
                 input.parentElement.classList.add('focused');
             }
         });
-        
+
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Get form data
             const name = this.querySelector('input[type="text"]').value;
             const email = this.querySelector('input[type="email"]').value;
             const message = this.querySelector('textarea').value;
-            
+
             // Simple validation
             if (!name || !email || !message) {
                 showNotification('Please fill in all fields', 'error');
                 return;
             }
-            
+
             if (!isValidEmail(email)) {
                 showNotification('Please enter a valid email address', 'error');
                 return;
             }
-            
+
             // Simulate form submission
             showNotification('Thank you for your message! We will get back to you soon.', 'success');
             this.reset();
-            
+
             // Remove focused class from all form groups
             formInputs.forEach(input => {
                 input.parentElement.classList.remove('focused');
             });
         });
     }
-    
+
     // Email validation function
     function isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
-    
+
     // Enhanced notification system
     function showNotification(message, type = 'info') {
         // Remove existing notifications
@@ -300,7 +300,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (existingNotification) {
             existingNotification.remove();
         }
-        
+
         // Create notification element
         const notification = document.createElement('div');
         notification.className = `notification notification-${type}`;
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <button class="notification-close">&times;</button>
             </div>
         `;
-        
+
         // Add styles
         notification.style.cssText = `
             position: fixed;
@@ -326,15 +326,15 @@ document.addEventListener('DOMContentLoaded', function () {
             transform: translateX(100%);
             transition: transform 0.3s ease;
         `;
-        
+
         // Add to page
         document.body.appendChild(notification);
-        
+
         // Animate in
         setTimeout(() => {
             notification.style.transform = 'translateX(0)';
         }, 100);
-        
+
         // Close button functionality
         const closeBtn = notification.querySelector('.notification-close');
         closeBtn.addEventListener('click', function () {
@@ -345,7 +345,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }, 300);
         });
-        
+
         // Auto remove after 5 seconds
         setTimeout(() => {
             if (notification.parentNode) {
@@ -358,24 +358,24 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }, 5000);
     }
-    
+
     // Accordion functionality
     class Accordion {
         constructor() {
             this.accordionItems = document.querySelectorAll('.brand-accordion-item');
             this.init();
         }
-        
+
         init() {
             this.accordionItems.forEach(item => {
                 const header = item.querySelector('.brand-header');
                 const content = item.querySelector('.brand-content');
                 const arrow = item.querySelector('.brand-arrow');
-                
+
                 header.addEventListener('click', () => {
                     this.toggleItem(item);
                 });
-                
+
                 // Keyboard navigation
                 header.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
@@ -383,29 +383,29 @@ document.addEventListener('DOMContentLoaded', function () {
                         this.toggleItem(item);
                     }
                 });
-                
+
                 // Make header focusable
                 header.setAttribute('tabindex', '0');
                 header.setAttribute('role', 'button');
                 header.setAttribute('aria-expanded', 'false');
-                
+
                 // Set initial state
                 content.setAttribute('aria-hidden', 'true');
             });
         }
-        
+
         toggleItem(item) {
             const isActive = item.classList.contains('active');
             const content = item.querySelector('.brand-content');
             const header = item.querySelector('.brand-header');
-            
+
             // Close all other items
             this.accordionItems.forEach(otherItem => {
                 if (otherItem !== item) {
                     this.closeItem(otherItem);
                 }
             });
-            
+
             // Toggle current item
             if (isActive) {
                 this.closeItem(item);
@@ -413,29 +413,29 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.openItem(item);
             }
         }
-        
+
         openItem(item) {
             const content = item.querySelector('.brand-content');
             const header = item.querySelector('.brand-header');
-            
+
             item.classList.add('active');
             header.setAttribute('aria-expanded', 'true');
             content.setAttribute('aria-hidden', 'false');
-            
+
             // Smooth height animation
             content.style.maxHeight = content.scrollHeight + 'px';
         }
-        
+
         closeItem(item) {
             const content = item.querySelector('.brand-content');
             const header = item.querySelector('.brand-header');
-            
+
             item.classList.remove('active');
             header.setAttribute('aria-expanded', 'false');
             content.setAttribute('aria-hidden', 'true');
             content.style.maxHeight = '0';
         }
-        
+
         // Open first item by default
         openFirstItem() {
             if (this.accordionItems.length > 0) {
@@ -443,10 +443,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
-    
+
     // Initialize accordion
     const accordion = new Accordion();
-    
+
     // Open featured brand by default
     const featuredBrand = document.querySelector('.brand-accordion-item.featured');
     if (featuredBrand) {
@@ -454,7 +454,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         accordion.openFirstItem();
     }
-    
+
     // Brands Slider functionality
     class BrandsSlider {
         constructor() {
@@ -469,17 +469,17 @@ document.addEventListener('DOMContentLoaded', function () {
             this.maxIndex = Math.max(0, this.totalSlides - this.slidesToShow);
             this.autoPlayInterval = null;
             this.autoPlayDelay = 4000; // 4 seconds
-            
+
             this.init();
         }
-        
+
         init() {
             this.createDots();
             this.updateSlider();
             this.bindEvents();
             this.startAutoPlay();
         }
-        
+
         getSlidesToShow() {
             const width = window.innerWidth;
             if (width <= 480) return 1;
@@ -488,11 +488,11 @@ document.addEventListener('DOMContentLoaded', function () {
             if (width <= 1200) return 3;
             return 4;
         }
-        
+
         createDots() {
             this.dotsContainer.innerHTML = '';
             const totalDots = this.maxIndex + 1;
-            
+
 
             let arabic = document.documentElement.getAttribute('lang') === 'ar';
             let start = arabic ? totalDots - 1 : 0;
@@ -505,14 +505,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.dotsContainer.appendChild(dot);
             }
         }
-        
+
         bindEvents() {
             this.prevBtn.addEventListener('click', () => this.prevSlide());
             this.nextBtn.addEventListener('click', () => this.nextSlide());
-            
+
             // Add click functionality to brand cards
             const brandIds = ['bikrati', 'delovood', 'fattal-food', 'ingredient-world', 'khayrat-blady', 'fattal-dairy', 'delobar', 'vita-duro'];
-            
+
             this.brandCards.forEach((card, index) => {
                 card.addEventListener('click', () => {
                     const brandId = brandIds[index];
@@ -521,36 +521,36 @@ document.addEventListener('DOMContentLoaded', function () {
                         window.location.href = `brand.html?id=${brandId}`;
                     }
                 });
-                
+
                 // Add cursor pointer style
                 card.style.cursor = 'pointer';
             });
-            
+
             // Touch/swipe support
             let startX = 0;
             let startY = 0;
             let isDragging = false;
-            
+
             this.sliderTrack.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].clientX;
                 startY = e.touches[0].clientY;
                 isDragging = true;
                 this.stopAutoPlay();
             });
-            
+
             this.sliderTrack.addEventListener('touchmove', (e) => {
                 if (!isDragging) return;
                 e.preventDefault();
             });
-            
+
             this.sliderTrack.addEventListener('touchend', (e) => {
                 if (!isDragging) return;
-                
+
                 const endX = e.changedTouches[0].clientX;
                 const endY = e.changedTouches[0].clientY;
                 const diffX = startX - endX;
                 const diffY = startY - endY;
-                
+
                 // Only trigger if horizontal swipe is more significant than vertical
                 if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
                     if (diffX > 0) {
@@ -559,11 +559,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         this.prevSlide();
                     }
                 }
-                
+
                 isDragging = false;
                 this.startAutoPlay();
             });
-            
+
             // Keyboard navigation
             this.sliderTrack.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowLeft') {
@@ -574,14 +574,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     this.nextSlide();
                 }
             });
-            
+
             // Make slider focusable for keyboard navigation
             this.sliderTrack.setAttribute('tabindex', '0');
-            
+
             // Pause auto-play on hover
             this.sliderTrack.addEventListener('mouseenter', () => this.stopAutoPlay());
             this.sliderTrack.addEventListener('mouseleave', () => this.startAutoPlay());
-            
+
             // Handle window resize
             window.addEventListener('resize', () => {
                 this.slidesToShow = this.getSlidesToShow();
@@ -591,7 +591,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.updateSlider();
             });
         }
-        
+
         updateSlider() {
             const cardWidth = 100 / this.slidesToShow;
             let arabic = document.documentElement.getAttribute('lang') === 'ar';
@@ -722,10 +722,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         createDots() {
             this.dotsContainer.innerHTML = '';
-            for (let i = 0; i < this.totalSlides; i++) {
+            let arabic = document.documentElement.getAttribute('lang') === 'ar';
+            let start = arabic ? this.totalSlides: 0;
+            let end = arabic ? 0 : this.totalSlides;
+            for (let i = start; i !== end; i += arabic ? -1 : 1) {
                 const dot = document.createElement('button');
                 dot.className = 'slider-dot';
-                if (i === 0) dot.classList.add('active');
+                if (i === this.currentIndex) dot.classList.add('active');
                 dot.addEventListener('click', () => this.goToSlide(i));
                 this.dotsContainer.appendChild(dot);
             }
@@ -798,8 +801,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         updateSlider() { 
+            let arabic = document.documentElement.getAttribute('lang') === 'ar';
             const translateX = -(this.currentIndex * 100);
-            this.sliderTrack.style.transform = `translateX(${translateX}%)`;
+            this.sliderTrack.style.transform = arabic ? `translateX(${-translateX}%)` : `translateX(${translateX}%)`;
 
             // Update button states - no need to disable for looping slider
             this.prevBtn.disabled = false;
@@ -820,6 +824,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         nextSlide() {
+            let arabic = document.documentElement.getAttribute('lang') === 'ar';
+            if (arabic) {
+                if (this.currentIndex > 0) {
+                    this.currentIndex--;
+                    this.updateSlider();
+                } else {
+                    // Loop to end
+                    this.currentIndex = this.totalSlides - 1;
+                    this.updateSlider();
+                }
+                this.stopAutoPlay();
+                this.startAutoPlay();
+                return;
+            }
             if (this.currentIndex < this.totalSlides - 1) {
                 this.currentIndex++;
                 this.updateSlider();
@@ -833,6 +851,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         prevSlide() {
+            let arabic = document.documentElement.getAttribute('lang') === 'ar';
+            if (arabic) {
+                if (this.currentIndex < this.totalSlides - 1) {
+                    this.currentIndex++;
+                    this.updateSlider();
+                } else {
+                    // Loop back to start
+                    this.currentIndex = 0;
+                    this.updateSlider();
+                }
+                this.stopAutoPlay();
+                this.startAutoPlay();
+                return;
+            }
             if (this.currentIndex > 0) {
                 this.currentIndex--;
                 this.updateSlider();
@@ -1106,19 +1138,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.head.appendChild(style);
 
 
-    // Clickable brand functionality
-    // const clickableBrands = document.querySelectorAll('.brand-header[data-brand]');
-    // clickableBrands.forEach(brand => {
-    //     brand.addEventListener('click', function() {
-    //         const brandName = this.getAttribute('data-brand');
-    //         if (brandName === 'bikrati') {
-    //             window.location.href = 'bikrati.html';
-    //         }
-    //         // Add more brand pages here as needed
-    //     });
-    // });
-
-    // Newsletter form functionality
     const newsletterForm = document.querySelector('.newsletter-form');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', function (e) {
@@ -1214,7 +1233,7 @@ document.addEventListener('DOMContentLoaded', function () {
             this.style.boxShadow = 'var(--shadow-light)';
         });
     });
-    
+
     // Console welcome message
     console.log('%cFattal Group Website - Magazine Style Version', 'color: #1e3a8a; font-size: 20px; font-weight: bold;');
     console.log('%cBringing Quality Food to Every Table Since 1965', 'color: #3b82f6; font-size: 14px;');
@@ -1331,71 +1350,71 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-    // ========================================
-    // MODERN ABOUT SECTION SCROLL ANIMATIONS
-    // ========================================
-    
-    // Intersection Observer for scroll-triggered animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+// ========================================
+// MODERN ABOUT SECTION SCROLL ANIMATIONS
+// ========================================
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-                
-                // Reset and re-trigger animations for child elements
-                const children = entry.target.querySelectorAll('[data-delay]');
-                children.forEach((child, index) => {
-                    // Reset animation state
-                    child.style.opacity = '0';
-                    child.style.transform = 'translateY(30px) translateX(30px)';
-                    
-                    // Re-trigger animation with delay
-                    const delay = parseFloat(child.getAttribute('data-delay')) || 0;
-                    setTimeout(() => {
-                        child.style.opacity = '1';
-                        child.style.transform = 'translateY(0) translateX(0)';
-                    }, delay * 1000);
-                });
+// Intersection Observer for scroll-triggered animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
 
-                // Handle card reveal animations
-                const cardElements = entry.target.querySelectorAll('.card-reveal');
-                cardElements.forEach((card, index) => {
-                    // Reset card animation state
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(50px)';
-                    
-                    // Re-trigger card animation with delay
-                    const cardDelay = 0.2 + (index * 0.2); // Stagger card animations
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, cardDelay * 1000);
-                });
-            } else {
-                // Reset elements when they go out of view
-                entry.target.classList.remove('animate-in');
-                const children = entry.target.querySelectorAll('[data-delay]');
-                children.forEach((child) => {
-                    child.style.opacity = '0';
-                    child.style.transform = 'translateY(30px) translateX(30px)';
-                });
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
 
-                // Reset card elements
-                const cardElements = entry.target.querySelectorAll('.card-reveal');
-                cardElements.forEach((card) => {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(50px)';
-                });
-            }
-        });
-    }, observerOptions);
+            // Reset and re-trigger animations for child elements
+            const children = entry.target.querySelectorAll('[data-delay]');
+            children.forEach((child, index) => {
+                // Reset animation state
+                child.style.opacity = '0';
+                child.style.transform = 'translateY(30px) translateX(30px)';
 
-    // Observe all animated elements
-    const animatedElements = document.querySelectorAll(`
+                // Re-trigger animation with delay
+                const delay = parseFloat(child.getAttribute('data-delay')) || 0;
+                setTimeout(() => {
+                    child.style.opacity = '1';
+                    child.style.transform = 'translateY(0) translateX(0)';
+                }, delay * 1000);
+            });
+
+            // Handle card reveal animations
+            const cardElements = entry.target.querySelectorAll('.card-reveal');
+            cardElements.forEach((card, index) => {
+                // Reset card animation state
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+
+                // Re-trigger card animation with delay
+                const cardDelay = 0.2 + (index * 0.2); // Stagger card animations
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, cardDelay * 1000);
+            });
+        } else {
+            // Reset elements when they go out of view
+            entry.target.classList.remove('animate-in');
+            const children = entry.target.querySelectorAll('[data-delay]');
+            children.forEach((child) => {
+                child.style.opacity = '0';
+                child.style.transform = 'translateY(30px) translateX(30px)';
+            });
+
+            // Reset card elements
+            const cardElements = entry.target.querySelectorAll('.card-reveal');
+            cardElements.forEach((card) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+            });
+        }
+    });
+}, observerOptions);
+
+// Observe all animated elements
+const animatedElements = document.querySelectorAll(`
         .about-bg-elements,
         .section-badge,
         .section-title,
@@ -1414,63 +1433,63 @@ document.head.appendChild(style);
         .stat-item
     `);
 
-    animatedElements.forEach(el => {
-        if (el) {
-            observer.observe(el);
+animatedElements.forEach(el => {
+    if (el) {
+        observer.observe(el);
+    }
+});
+
+// Parallax effect for background circles
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const circles = document.querySelectorAll('.bg-circle');
+
+    circles.forEach((circle, index) => {
+        const speed = 0.5 + (index * 0.1);
+        const yPos = -(scrolled * speed);
+        circle.style.transform = `translateY(${yPos}px) rotate(${scrolled * 0.1}deg)`;
+    });
+});
+
+// Counter animation for stats
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+
+    counters.forEach(counter => {
+        const target = parseInt(counter.textContent.replace(/\D/g, ''));
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                counter.textContent = counter.textContent.replace(/\d+/, target);
+                clearInterval(timer);
+            } else {
+                counter.textContent = counter.textContent.replace(/\d+/, Math.floor(current));
+            }
+        }, 16);
+    });
+}
+
+// Trigger counter animation when stats section is visible
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateCounters();
+            statsObserver.unobserve(entry.target);
         }
     });
+}, { threshold: 0.5 });
 
-    // Parallax effect for background circles
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const circles = document.querySelectorAll('.bg-circle');
-        
-        circles.forEach((circle, index) => {
-            const speed = 0.5 + (index * 0.1);
-            const yPos = -(scrolled * speed);
-            circle.style.transform = `translateY(${yPos}px) rotate(${scrolled * 0.1}deg)`;
-        });
-    });
+const statsSection = document.querySelector('.floating-stats');
+if (statsSection) {
+    statsObserver.observe(statsSection);
+}
 
-    // Counter animation for stats
-    function animateCounters() {
-        const counters = document.querySelectorAll('.stat-number');
-        
-        counters.forEach(counter => {
-            const target = parseInt(counter.textContent.replace(/\D/g, ''));
-            const duration = 2000;
-            const increment = target / (duration / 16);
-            let current = 0;
-            
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    counter.textContent = counter.textContent.replace(/\d+/, target);
-                    clearInterval(timer);
-                } else {
-                    counter.textContent = counter.textContent.replace(/\d+/, Math.floor(current));
-                }
-            }, 16);
-        });
-    }
-
-    // Trigger counter animation when stats section is visible
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounters();
-                statsObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    const statsSection = document.querySelector('.floating-stats');
-    if (statsSection) {
-        statsObserver.observe(statsSection);
-    }
-
-    // Hover effects for interactive elements
-    const interactiveElements = document.querySelectorAll(`
+// Hover effects for interactive elements
+const interactiveElements = document.querySelectorAll(`
         .mission-card,
         .vision-card,
         .goal-item,
@@ -1481,39 +1500,39 @@ document.head.appendChild(style);
         .achievements-card
     `);
 
-    interactiveElements.forEach(el => {
-        if (el) {
-            el.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            el.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        }
-    });
+interactiveElements.forEach(el => {
+    if (el) {
+        el.addEventListener('mouseenter', function () {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
 
-    // Smooth reveal animation for text elements
-    const textElements = document.querySelectorAll('.text-reveal');
-    textElements.forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.8s ease-out';
-    });
+        el.addEventListener('mouseleave', function () {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    }
+});
 
-    // Reset and animate card elements
-    const cardElements = document.querySelectorAll('.card-reveal');
-    cardElements.forEach((el) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(50px)';
-        el.style.transition = 'all 0.8s ease-out';
-    });
+// Smooth reveal animation for text elements
+const textElements = document.querySelectorAll('.text-reveal');
+textElements.forEach((el, index) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'all 0.8s ease-out';
+});
 
-    // Initialize animations on page load
-    setTimeout(() => {
-        const aboutSection = document.querySelector('.about');
-        if (aboutSection) {
-            aboutSection.classList.add('loaded');
-        }
-    }, 100);
+// Reset and animate card elements
+const cardElements = document.querySelectorAll('.card-reveal');
+cardElements.forEach((el) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(50px)';
+    el.style.transition = 'all 0.8s ease-out';
+});
+
+// Initialize animations on page load
+setTimeout(() => {
+    const aboutSection = document.querySelector('.about');
+    if (aboutSection) {
+        aboutSection.classList.add('loaded');
+    }
+}, 100);
 

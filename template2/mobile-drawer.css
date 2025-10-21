@@ -1,7 +1,3 @@
-/* 
-  In CSS, to "import root from style.css", we use @import to import styles, 
-  and ":root" is used for CSS variables. Here's the closest equivalent:
-*/
 @import url('./style.css');
 
 
@@ -30,8 +26,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: color-mix(in srgb, var(--white) 30%, transparent);
-    backdrop-filter: blur(15px);
+    background: color-mix(in srgb, var(--white) 60%, transparent);
+    backdrop-filter: blur(40px);
 }
 
 .drawer-content {
@@ -40,7 +36,7 @@
     right: 0;
     width: 320px;
     height: 100%;
-    background: var(--primary-color);
+    /* background: var(--primary-color); */
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
     transform: translateX(100%);
     transition: transform 0.3s ease;
@@ -70,7 +66,7 @@
 }
 
 .drawer-logo .logo {
-    width: 40px;
+    /* width: 100px; */
     height: 40px;
 }
 
@@ -108,7 +104,7 @@
     align-items: center;
     gap: 16px;
     padding: 16px 20px;
-    color: var(--primary-color) ;
+    color: var(--black);
     text-decoration: none;
     font-size: 1.4rem;
     font-weight: 500;
@@ -123,9 +119,9 @@
 }
 
 .drawer-link i {
-    width: 20px;
+    width: 30px;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 .drawer-footer {
@@ -199,7 +195,7 @@
 }
 
 [data-theme="dark"] .drawer-link {
-    color: var(--white);
+    color: var(--black);
 }
 
 [data-theme="dark"] .drawer-link:hover {

@@ -6,6 +6,7 @@
     <title id="page-title">Brand | Fattal Group</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dropdown.css">
+    <link rel="stylesheet" href="mobile-drawer.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -15,7 +16,6 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <img src="logo.png" alt="Fattal Group Logo" class="logo">
-                <span class="brand-name">Fattal Group</span>
             </div>
             
             <div class="nav-center">
@@ -112,6 +112,59 @@
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-overlay" id="drawerOverlay"></div>
+        <div class="drawer-content">
+            <div class="drawer-header">
+                <div class="drawer-logo">
+                    <img src="logo.png" alt="Fattal Group Logo" class="logo">
+                </div>
+                <button class="drawer-close" id="drawerClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="drawer-navigation">
+                <a href="#home" class="drawer-link" data-en="Home" data-ar="الرئيسية">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#about" class="drawer-link" data-en="About" data-ar="حولنا">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About</span>
+                </a>
+                <a href="#brands" class="drawer-link" data-en="Brands" data-ar="العلامات التجارية">
+                    <i class="fas fa-tags"></i>
+                    <span>Brands</span>
+                </a>
+                <a href="#contact" class="drawer-link" data-en="Contact" data-ar="اتصل بنا">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
+            
+            <div class="drawer-footer">
+                <div class="drawer-settings">
+                    <div class="drawer-language">
+                        <h4 data-en="Language" data-ar="اللغة">Language</h4>
+                        <div class="language-buttons">
+                            <button class="lang-btn active" data-lang="en">EN</button>
+                            <button class="lang-btn" data-lang="ar">عربي</button>
+                        </div>
+                    </div>
+                    <div class="drawer-theme">
+                        <h4 data-en="Theme" data-ar="المظهر">Theme</h4>
+                        <button class="theme-toggle" id="drawerThemeToggle" aria-label="Toggle theme">
+                            <i class="fas fa-moon"></i>
+                            <span data-en="Dark Mode" data-ar="الوضع المظلم">Dark Mode</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Brand Hero Section -->
     <section class="brand-hero">
@@ -299,7 +352,6 @@
                 <div class="footer-section main">
                     <div class="footer-logo">
                         <img src="logo.png" alt="Fattal Group Logo" class="logo">
-                        <span class="brand-name">Fattal Group</span>
                     </div>
                     <p class="footer-description" data-en="Bringing Quality Food to Every Table Since 1965" data-ar="منذ عام 1965 ، نضع الغذاء عالي الجودة على كل مائدة">Bringing Quality Food to Every Table Since 1965</p>
                     <div class="footer-social">
