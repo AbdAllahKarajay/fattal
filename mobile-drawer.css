@@ -1,0 +1,247 @@
+/* 
+  In CSS, to "import root from style.css", we use @import to import styles, 
+  and ":root" is used for CSS variables. Here's the closest equivalent:
+*/
+@import url('./style.css');
+
+
+
+/* Mobile Drawer Styles */
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.mobile-drawer.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.drawer-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: color-mix(in srgb, var(--white) 30%, transparent);
+    backdrop-filter: blur(15px);
+}
+
+.drawer-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 320px;
+    height: 100%;
+    background: var(--primary-color);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+.mobile-drawer.active .drawer-content {
+    transform: translateX(0);
+}
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid var(--light-gray);
+    background: var(--white);
+}
+
+.drawer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.drawer-logo .logo {
+    width: 40px;
+    height: 40px;
+}
+
+.drawer-logo .brand-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-family: var(--font-primary);
+}
+
+.drawer-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.drawer-close:hover {
+    background: var(--light-gray);
+    color: var(--primary-color);
+}
+
+.drawer-navigation {
+    flex: 1;
+    padding: 20px 0;
+    overflow-y: auto;
+}
+
+.drawer-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    color: var(--primary-color) ;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.drawer-link:hover {
+    background: var(--light-gray);
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+}
+
+.drawer-link i {
+    width: 20px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.drawer-footer {
+    padding: 20px;
+    border-top: 1px solid var(--light-gray);
+    background: var(--cream);
+}
+
+.drawer-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.drawer-language,
+.drawer-theme {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.drawer-language h4,
+.drawer-theme h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.language-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.drawer-theme .theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    padding: 12px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.drawer-theme .theme-toggle:hover {
+    background: var(--light-gray);
+    border-color: var(--primary-color);
+}
+
+.drawer-theme .theme-toggle i {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+/* Dark theme drawer styles */
+[data-theme="dark"] .drawer-content {
+    background: var(--dark-bg);
+    border-left: 1px solid var(--primary-color);
+}
+
+[data-theme="dark"] .drawer-header {
+    background: var(--dark-bg);
+    border-bottom-color: var(--primary-color);
+}
+
+[data-theme="dark"] .drawer-link {
+    color: var(--white);
+}
+
+[data-theme="dark"] .drawer-link:hover {
+    background: rgba(30, 58, 138, 0.1);
+    color: var(--accent-color);
+}
+
+[data-theme="dark"] .drawer-footer {
+    background: rgba(15, 23, 42, 0.8);
+    border-top-color: var(--primary-color);
+}
+
+[data-theme="dark"] .drawer-theme .theme-toggle {
+    background: var(--dark-bg);
+    border-color: var(--primary-color);
+    color: var(--white);
+}
+
+[data-theme="dark"] .drawer-theme .theme-toggle:hover {
+    background: rgba(30, 58, 138, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .drawer-content {
+        width: 100%;
+    }
+    
+    .drawer-header {
+        padding: 15px;
+    }
+    
+    .drawer-navigation {
+        padding: 15px 0;
+    }
+    
+    .drawer-link {
+        padding: 14px 15px;
+        font-size: 1rem;
+    }
+    
+    .drawer-footer {
+        padding: 15px;
+    }
+}

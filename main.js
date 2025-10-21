@@ -95,15 +95,89 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize theme
     initializeTheme();
     
-    // Mobile menu functionality
+    // Mobile drawer functionality
     const hamburger = document.getElementById('hamburger');
-    const navContainer = document.querySelector('.nav-container');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+    const drawerClose = document.getElementById('drawerClose');
+    const drawerThemeToggle = document.getElementById('drawerThemeToggle');
     
-    if (hamburger && navContainer) {
+    // Open drawer
+    if (hamburger && mobileDrawer) {
         hamburger.addEventListener('click', function () {
-            navContainer.classList.toggle('mobile-menu-active');
-            hamburger.classList.toggle('active');
+            mobileDrawer.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
         });
+    }
+    
+    // Close drawer functions
+    function closeDrawer() {
+        if (mobileDrawer) {
+            mobileDrawer.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    }
+    
+    // Close drawer on overlay click
+    if (drawerOverlay) {
+        drawerOverlay.addEventListener('click', closeDrawer);
+    }
+    
+    // Close drawer on close button click
+    if (drawerClose) {
+        drawerClose.addEventListener('click', closeDrawer);
+    }
+    
+    // Close drawer on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileDrawer && mobileDrawer.classList.contains('active')) {
+            closeDrawer();
+        }
+    });
+    
+    // Close drawer when clicking on navigation links
+    const drawerLinks = document.querySelectorAll('.drawer-link');
+    drawerLinks.forEach(link => {
+        link.addEventListener('click', closeDrawer);
+    });
+    
+    // Drawer theme toggle functionality
+    if (drawerThemeToggle) {
+        drawerThemeToggle.addEventListener('click', function () {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            applyTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    }
+    
+    // Sync drawer theme toggle with main theme toggle
+    function syncThemeToggles() {
+        const mainThemeToggle = document.getElementById('themeToggle');
+        const drawerThemeToggle = document.getElementById('drawerThemeToggle');
+        
+        if (mainThemeToggle && drawerThemeToggle) {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            const mainIcon = mainThemeToggle.querySelector('i');
+            const drawerIcon = drawerThemeToggle.querySelector('i');
+            const drawerText = drawerThemeToggle.querySelector('span');
+            
+            if (mainIcon) {
+                mainIcon.className = currentTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+            if (drawerIcon) {
+                drawerIcon.className = currentTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+            if (drawerText) {
+                drawerText.textContent = currentTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+            }
+        }
+    }
+    
+    // Update theme toggle function to sync both toggles
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        syncThemeToggles();
     }
     
     // Smooth scrolling for navigation links (only hash links)
@@ -795,9 +869,135 @@ document.addEventListener('DOMContentLoaded', function () {
         const imageSlider = new ImageSlider();
     }
 
+    // Dropdown functionality
+    const brandsDropdown = document.getElementById('brandsDropdown');
+    const brandsDropdownMenu = document.getElementById('brandsDropdownMenu');
+    let dropdownTimeout;
+
+    if (brandsDropdown && brandsDropdownMenu) {
+        brandsDropdown.addEventListener('mouseenter', () => {
+            clearTimeout(dropdownTimeout);
+            brandsDropdownMenu.style.opacity = '1';
+            brandsDropdownMenu.style.visibility = 'visible';
+            brandsDropdownMenu.style.transform = 'translateY(0)';
+        });
+
+        brandsDropdown.addEventListener('mouseleave', () => {
+            dropdownTimeout = setTimeout(() => {
+                brandsDropdownMenu.style.opacity = '0';
+                brandsDropdownMenu.style.visibility = 'hidden';
+                brandsDropdownMenu.style.transform = 'translateY(-10px)';
+            }, 150);
+        });
+
+        brandsDropdownMenu.addEventListener('mouseenter', () => {
+            clearTimeout(dropdownTimeout);
+        });
+
+        brandsDropdownMenu.addEventListener('mouseleave', () => {
+            dropdownTimeout = setTimeout(() => {
+                brandsDropdownMenu.style.opacity = '0';
+                brandsDropdownMenu.style.visibility = 'hidden';
+                brandsDropdownMenu.style.transform = 'translateY(-10px)';
+            }, 150);
+        });
+    }
+
     // Add CSS for enhanced styles
     const style = document.createElement('style');
     style.textContent = `
+    /* Dropdown Menu Styles */
+    .nav-dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .dropdown-toggle i {
+        font-size: 0.8rem;
+        transition: transform 0.3s ease;
+    }
+
+    .nav-dropdown:hover .dropdown-toggle i {
+        transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: var(--white);
+        border-radius: 8px;
+        box-shadow: var(--shadow-medium);
+        min-width: 250px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        border: 1px solid var(--light-gray);
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .dropdown-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 20px;
+        color: var(--text-dark);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid var(--light-gray);
+    }
+
+    .dropdown-item:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-item:hover {
+        background: var(--light-gray);
+        color: var(--primary-color);
+    }
+
+    .dropdown-item-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .dropdown-item-icon i {
+        font-size: 1.2rem;
+        color: var(--white);
+    }
+
+    .dropdown-item-content h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 4px;
+        color: inherit;
+    }
+
+    .dropdown-item-content p {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        margin: 0;
+    }
+
     .notification-content {
         display: flex;
         align-items: center;
@@ -1130,3 +1330,190 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+    // ========================================
+    // MODERN ABOUT SECTION SCROLL ANIMATIONS
+    // ========================================
+    
+    // Intersection Observer for scroll-triggered animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                
+                // Reset and re-trigger animations for child elements
+                const children = entry.target.querySelectorAll('[data-delay]');
+                children.forEach((child, index) => {
+                    // Reset animation state
+                    child.style.opacity = '0';
+                    child.style.transform = 'translateY(30px) translateX(30px)';
+                    
+                    // Re-trigger animation with delay
+                    const delay = parseFloat(child.getAttribute('data-delay')) || 0;
+                    setTimeout(() => {
+                        child.style.opacity = '1';
+                        child.style.transform = 'translateY(0) translateX(0)';
+                    }, delay * 1000);
+                });
+
+                // Handle card reveal animations
+                const cardElements = entry.target.querySelectorAll('.card-reveal');
+                cardElements.forEach((card, index) => {
+                    // Reset card animation state
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(50px)';
+                    
+                    // Re-trigger card animation with delay
+                    const cardDelay = 0.2 + (index * 0.2); // Stagger card animations
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, cardDelay * 1000);
+                });
+            } else {
+                // Reset elements when they go out of view
+                entry.target.classList.remove('animate-in');
+                const children = entry.target.querySelectorAll('[data-delay]');
+                children.forEach((child) => {
+                    child.style.opacity = '0';
+                    child.style.transform = 'translateY(30px) translateX(30px)';
+                });
+
+                // Reset card elements
+                const cardElements = entry.target.querySelectorAll('.card-reveal');
+                cardElements.forEach((card) => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(50px)';
+                });
+            }
+        });
+    }, observerOptions);
+
+    // Observe all animated elements
+    const animatedElements = document.querySelectorAll(`
+        .about-bg-elements,
+        .section-badge,
+        .section-title,
+        .section-subtitle,
+        .about-hero,
+        .floating-stats,
+        .mission-vision-grid,
+        .goals-values-section,
+        .heritage-card,
+        .achievements-card,
+        .text-reveal,
+        .card-reveal,
+        .goal-item,
+        .value-item,
+        .achievement-item,
+        .stat-item
+    `);
+
+    animatedElements.forEach(el => {
+        if (el) {
+            observer.observe(el);
+        }
+    });
+
+    // Parallax effect for background circles
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const circles = document.querySelectorAll('.bg-circle');
+        
+        circles.forEach((circle, index) => {
+            const speed = 0.5 + (index * 0.1);
+            const yPos = -(scrolled * speed);
+            circle.style.transform = `translateY(${yPos}px) rotate(${scrolled * 0.1}deg)`;
+        });
+    });
+
+    // Counter animation for stats
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-number');
+        
+        counters.forEach(counter => {
+            const target = parseInt(counter.textContent.replace(/\D/g, ''));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    counter.textContent = counter.textContent.replace(/\d+/, target);
+                    clearInterval(timer);
+                } else {
+                    counter.textContent = counter.textContent.replace(/\d+/, Math.floor(current));
+                }
+            }, 16);
+        });
+    }
+
+    // Trigger counter animation when stats section is visible
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    const statsSection = document.querySelector('.floating-stats');
+    if (statsSection) {
+        statsObserver.observe(statsSection);
+    }
+
+    // Hover effects for interactive elements
+    const interactiveElements = document.querySelectorAll(`
+        .mission-card,
+        .vision-card,
+        .goal-item,
+        .value-item,
+        .achievement-item,
+        .stat-item,
+        .heritage-card,
+        .achievements-card
+    `);
+
+    interactiveElements.forEach(el => {
+        if (el) {
+            el.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            el.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        }
+    });
+
+    // Smooth reveal animation for text elements
+    const textElements = document.querySelectorAll('.text-reveal');
+    textElements.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.8s ease-out';
+    });
+
+    // Reset and animate card elements
+    const cardElements = document.querySelectorAll('.card-reveal');
+    cardElements.forEach((el) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(50px)';
+        el.style.transition = 'all 0.8s ease-out';
+    });
+
+    // Initialize animations on page load
+    setTimeout(() => {
+        const aboutSection = document.querySelector('.about');
+        if (aboutSection) {
+            aboutSection.classList.add('loaded');
+        }
+    }, 100);
+

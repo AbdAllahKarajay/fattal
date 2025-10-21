@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Brand | Fattal Group</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dropdown.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -18,10 +19,80 @@
             </div>
             
             <div class="nav-center">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="index.html#about" class="nav-link">About</a>
-                <a href="index.html#brands" class="nav-link">Brands</a>
-                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="index.html" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a>
+                <a href="index.html#about" class="nav-link" data-en="About" data-ar="حولنا">About</a>
+                <div class="nav-dropdown">
+                    <a href="index.html#brands" class="nav-link dropdown-toggle" id="brandsDropdown">
+                        <span data-en="Brands" data-ar="العلامات التجارية">Brands</span> <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu" id="brandsDropdownMenu">
+                        <a href="brand.html?id=bikrati" class="dropdown-item">
+                            <div class="dropdown-item-icon">
+                                <img src="../ماركاتنا/بيكراتي فاكتوري.svg" alt="بيكراتي" />
+                            </div>
+                            <div class="dropdown-item-content">
+                                <span class="dropdown-item-name" data-ar="بيكراتي" data-en="Bikrati">بيكراتي</span>
+                            </div>
+                        </a>
+                        <a href="brand.html?id=delovood" class="dropdown-item">
+                            <div class="dropdown-item-icon">
+                                <img src="../ماركاتنا/delufood logo.svg" alt="ديلوفوود" />
+                            </div>
+                            <div class="dropdown-item-content">
+                                <span class="dropdown-item-name" data-ar="ديلوفوود" data-en="Delovood">ديلوفوود</span>
+                            </div>
+                        </a>
+                        <a href="brand.html?id=fattal-food" class="dropdown-item">
+                            <div class="dropdown-item-icon">
+                                <img src="../ماركاتنا/Fattal Food logo.svg" alt="فتال فوود" />
+                            </div>
+                            <div class="dropdown-item-content">
+                                <span class="dropdown-item-name" data-ar="فتال فوود" data-en="Fattal Food">فتال فوود</span>
+                            </div>
+                        </a>
+                        <a href="brand.html?id=ingredient-world" class="dropdown-item">
+                            <div class="dropdown-item-icon">
+                                <img src="../ماركاتنا/Ingredient world - logo.svg" alt="عالم المواد" />
+                            </div>
+                            <div class="dropdown-item-content">
+                                <span class="dropdown-item-name" data-ar="عالم المواد" data-en="Ingredient World">عالم المواد</span>
+                            </div>
+                        </a>
+                        <a href="brand.html?id=khayrat-blady" class="dropdown-item">
+                            <div class="dropdown-item-icon">
+                                <img src="../ماركاتنا/khayrat blady logo.svg" alt="خيرات بلادي" />
+                            </div>
+                            <div class="dropdown-item-content">
+                                <span class="dropdown-item-name" data-ar="خيرات بلادي" data-en="Khayrat Blady">خيرات بلادي</span>
+                            </div>
+                        </a>
+                        <a href="brand.html?id=fattal-dairy" class="dropdown-item">
+                            <div class="dropdown-item-icon">
+                                <i class="fas fa-cheese"></i>
+                            </div>
+                            <div class="dropdown-item-content">
+                                <span class="dropdown-item-name" data-ar="فتال ديري" data-en="Fattal Dairy">فتال ديري</span>
+                            </div>
+                        </a>
+                        <a href="brand.html?id=delobar" class="dropdown-item">
+                            <div class="dropdown-item-icon">
+                                <i class="fas fa-candy-cane"></i>
+                            </div>
+                            <div class="dropdown-item-content">
+                                <span class="dropdown-item-name" data-ar="ديلوبار" data-en="Delobar">ديلوبار</span>
+                            </div>
+                        </a>
+                        <a href="brand.html?id=vita-duro" class="dropdown-item">
+                            <div class="dropdown-item-icon">
+                                <i class="fas fa-apple-alt"></i>
+                            </div>
+                            <div class="dropdown-item-content">
+                                <span class="dropdown-item-name" data-ar="فيتا دورو" data-en="Vita Duro">فيتا دورو</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <a href="index.html#contact" class="nav-link" data-en="Contact" data-ar="اتصل بنا">Contact</a>
             </div>
             
             <div class="nav-right">

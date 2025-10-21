@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fattal Group - Bringing Quality Food to Every Table Since 1965</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dropdown.css">
+    <link rel="stylesheet" href="about-modern.css">
+    <link rel="stylesheet" href="mobile-drawer.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -14,14 +17,91 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <img src="logo.png" alt="Fattal Group Logo" class="logo">
-                <span class="brand-name">Fattal Group</span>
             </div>
             
             <div class="nav-center">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#brands" class="nav-link">Brands</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#home" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a>
+                <a href="#about" class="nav-link" data-en="About" data-ar="حولنا">About</a>
+                <div class="nav-dropdown">
+                    <a href="#brands" class="nav-link dropdown-toggle" id="brandsDropdown">
+                        <span data-en="Brands" data-ar="العلامات التجارية">Brands</span> <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu" id="brandsDropdownMenu">
+                        <a href="brand.html?id=bikrati" class="dropdown-item">
+                            <div class="dropdown-item-icon">
+                                <img src="../ماركاتنا/بيكراتي فاكتوري.svg" alt="بيكراتي" />
+                            </div>
+                            <div class="dropdown-item-content">
+                                <span class="dropdown-item-name" data-ar="بيكراتي" data-en="Bikrati">بيكراتي</span>
+                                <!-- <span class="dropdown-item-desc">Premium Bakery Products</span> -->
+                            </div>
+                        </a>
+                        <a href="brand.html?id=delovood" class="dropdown-item">
+                            <div class="dropdown-item-icon">
+                                <img src="../ماركاتنا/delufood logo.svg" alt="ديلوفوود" />
+                            </div>
+                            <div class="dropdown-item-content">
+                                <span class="dropdown-item-name" data-ar="ديلوفوود" data-en="Delovood">ديلوفوود</span>
+                                <!-- <span class="dropdown-item-desc">Natural Food Products</span> -->
+                            </div>
+                        </a>
+                        <a href="brand.html?id=fattal-food" class="dropdown-item">
+                            <div class="dropdown-item-icon">
+                                <img src="../ماركاتنا/Fattal Food logo.svg" alt="فتال فوود" />
+                            </div>
+                            <div class="dropdown-item-content">
+                                <span class="dropdown-item-name" data-ar="فتال فوود" data-en="Fattal Food">فتال فوود</span>
+                                <!-- <span class="dropdown-item-desc">Quality Food Solutions</span> -->
+                            </div>
+                        </a>
+                        <a href="brand.html?id=ingredient-world" class="dropdown-item">
+                            <div class="dropdown-item-icon">
+                                <img src="../ماركاتنا/Ingredient world - logo.svg" alt="عالم المواد" />
+                            </div>
+                            <div class="dropdown-item-content">
+                                <span class="dropdown-item-name" data-ar="عالم المواد" data-en="Ingredient World">عالم المواد</span>
+                                <!-- <span class="dropdown-item-desc">Global Ingredients</span> -->
+                            </div>
+                        </a>
+                        <a href="brand.html?id=khayrat-blady" class="dropdown-item">
+                            <div class="dropdown-item-icon">
+                                <img src="../ماركاتنا/khayrat blady logo.svg" alt="خيرات بلادي" />
+                            </div>
+                            <div class="dropdown-item-content">
+                                <span class="dropdown-item-name" data-ar="خيرات بلادي" data-en="Khayrat Blady">خيرات بلادي</span>
+                                <!-- <span class="dropdown-item-desc">Local Produce</span> -->
+                            </div>
+                        </a>
+                        <a href="brand.html?id=fattal-dairy" class="dropdown-item">
+                            <div class="dropdown-item-icon">
+                                <i class="fas fa-cheese"></i>
+                            </div>
+                            <div class="dropdown-item-content">
+                                <span class="dropdown-item-name" data-ar="فتال ديري" data-en="Fattal Dairy">فتال ديري</span>
+                                <!-- <span class="dropdown-item-desc">Dairy Products</span> -->
+                            </div>
+                        </a>
+                        <a href="brand.html?id=delobar" class="dropdown-item">
+                            <div class="dropdown-item-icon">
+                                <i class="fas fa-candy-cane"></i>
+                            </div>
+                            <div class="dropdown-item-content">
+                                <span class="dropdown-item-name" data-ar="ديلوبار" data-en="Delobar">ديلوبار</span>
+                                <!-- <span class="dropdown-item-desc">Confectionery</span> -->
+                            </div>
+                        </a>
+                        <a href="brand.html?id=vita-duro" class="dropdown-item">
+                            <div class="dropdown-item-icon">
+                                <i class="fas fa-apple-alt"></i>
+                            </div>
+                            <div class="dropdown-item-content">
+                                <span class="dropdown-item-name" data-ar="فيتا دورو" data-en="Vita Duro">فيتا دورو</span>
+                                <!-- <span class="dropdown-item-desc">Fresh Produce</span> -->
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <a href="#contact" class="nav-link" data-en="Contact" data-ar="اتصل بنا">Contact</a>
             </div>
             
             <div class="nav-right">
@@ -41,6 +121,60 @@
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-overlay" id="drawerOverlay"></div>
+        <div class="drawer-content">
+            <div class="drawer-header">
+                <div class="drawer-logo">
+                    <img src="logo.png" alt="Fattal Group Logo" class="logo">
+                    <span class="brand-name">Fattal Group</span>
+                </div>
+                <button class="drawer-close" id="drawerClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="drawer-navigation">
+                <a href="#home" class="drawer-link" data-en="Home" data-ar="الرئيسية">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#about" class="drawer-link" data-en="About" data-ar="حولنا">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About</span>
+                </a>
+                <a href="#brands" class="drawer-link" data-en="Brands" data-ar="العلامات التجارية">
+                    <i class="fas fa-tags"></i>
+                    <span>Brands</span>
+                </a>
+                <a href="#contact" class="drawer-link" data-en="Contact" data-ar="اتصل بنا">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
+            
+            <div class="drawer-footer">
+                <div class="drawer-settings">
+                    <div class="drawer-language">
+                        <h4 data-en="Language" data-ar="اللغة">Language</h4>
+                        <div class="language-buttons">
+                            <button class="lang-btn active" data-lang="en">EN</button>
+                            <button class="lang-btn" data-lang="ar">عربي</button>
+                        </div>
+                    </div>
+                    <div class="drawer-theme">
+                        <h4 data-en="Theme" data-ar="المظهر">Theme</h4>
+                        <button class="theme-toggle" id="drawerThemeToggle" aria-label="Toggle theme">
+                            <i class="fas fa-moon"></i>
+                            <span data-en="Dark Mode" data-ar="الوضع المظلم">Dark Mode</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section class="image-slider">
         <div class="slider-container">
@@ -159,74 +293,244 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="about-container">
+            <!-- Animated Background Elements -->
+            <div class="about-bg-elements">
+                <div class="bg-circle bg-circle-1"></div>
+                <div class="bg-circle bg-circle-2"></div>
+                <div class="bg-circle bg-circle-3"></div>
+            </div>
+            
             <div class="section-header">
-                <h2 class="section-title" data-en="About Us" data-ar="نبذة عنا">About Us</h2>
-                <p class="section-subtitle" data-en="Your Trusted Partner in Food Trading Since 1965" data-ar="شريككم الموثوق في تجارة المواد الغذائية">Your Trusted Partner in Food Trading Since 1965</p>
+                <div class="section-badge">
+                    <span data-en="About Us" data-ar="نبذة عنا">About Us</span>
+                </div>
+                <h2 class="section-title" data-en="Your Trusted Partner in Food Trading Since 1965" data-ar="شريككم الموثوق في تجارة المواد الغذائية">Your Trusted Partner in Food Trading Since 1965</h2>
+                <p class="section-subtitle" data-en="Connecting global quality with local families for over five decades" data-ar="نربط الجودة العالمية بالعائلات المحلية لأكثر من خمسة عقود">Connecting global quality with local families for over five decades</p>
             </div>
             
             <div class="about-content">
+                <!-- Main Content Area -->
                 <div class="about-main">
-                    <div class="about-text">
-                        <p class="lead-paragraph" data-en="Fattal Group has been dedicated to delivering high-quality food products to the Syrian market. With strong partnerships and exclusive agency agreements with leading international brands, we have established ourselves as a reliable partner for importing and distributing high-quality food products to ensure our customers always have access to the best in taste, freshness, and value." data-ar="دأبت مجموعة فتال على توفير منتجات غذائية عالية الجودة للسوق السورية. بفضل شراكاتنا القوية واتفاقيات الوكالات الحصرية مع أبرز العلامات التجارية العالمية، أثبتنا مكانتنا كشريك موثوق لاستيراد وتوزيع المنتجات الغذائية عالية الجودة، لضمان حصول عملائنا دائمًا على أفضل مذاق ونضارة وقيمة.">
-                            Fattal Group has been dedicated to delivering high-quality food products to the Syrian market. With strong partnerships and exclusive agency agreements with leading international brands, we have established ourselves as a reliable partner for importing and distributing high-quality food products to ensure our customers always have access to the best in taste, freshness, and value.
-                        </p>
-                        
-                        <p data-en="Our passion for food and guided by professionalism, innovation, and customer satisfaction drive us to continuously expand our portfolio, adapt to evolving consumer needs, and set new standards in the food trading industry. From our shelves to your home, we make sure every product we deliver carries our promise of quality and trust." data-ar="شغفنا بالطعام، واسترشادنا بالاحترافية والابتكار ورضا العملاء، يدفعنا إلى توسيع نطاق أعمالنا باستمرار، ومواكبة احتياجات المستهلكين المتطورة، ووضع معايير جديدة في قطاع تجارة الأغذية. من رفوفنا إلى منازلكم، نضمن أن كل منتج نقدمه يحمل وعدنا بالجودة والثقة.">
-                            Our passion for food and guided by professionalism, innovation, and customer satisfaction drive us to continuously expand our portfolio, adapt to evolving consumer needs, and set new standards in the food trading industry. From our shelves to your home, we make sure every product we deliver carries our promise of quality and trust.
-                        </p>
-                    </div>
-                    
-                    <div class="about-callouts">
-                        <div class="callout-box">
-                            <h4 data-en="Our Mission" data-ar="مهمتنا">Our Mission</h4>
-                            <p data-en="To connect global food brands with local consumers by importing, marketing, and distributing superior-quality products that enrich everyday life, while upholding our values of integrity, partnership, and customer satisfaction." data-ar="ربط العلامات التجارية الغذائية العالمية بالمستهلك المحلي من خلال استيراد وتسويق وتوزيع منتجات عالية الجودة تُثري الحياة اليومية، مع التمسك بقيمنا في النزاهة والشراكة ورضا العملاء.">To connect global food brands with local consumers by importing, marketing, and distributing superior-quality products that enrich everyday life, while upholding our values of integrity, partnership, and customer satisfaction.</p>
+                    <!-- Hero Text Section -->
+                    <div class="about-hero">
+                        <div class="hero-text-content">
+                            <div class="text-reveal">
+                                <p class="lead-paragraph" data-en="Fattal Group has been dedicated to delivering high-quality food products to the Syrian market. With strong partnerships and exclusive agency agreements with leading international brands, we have established ourselves as a reliable partner for importing and distributing high-quality food products to ensure our customers always have access to the best in taste, freshness, and value." data-ar="دأبت مجموعة فتال على توفير منتجات غذائية عالية الجودة للسوق السورية. بفضل شراكاتنا القوية واتفاقيات الوكالات الحصرية مع أبرز العلامات التجارية العالمية، أثبتنا مكانتنا كشريك موثوق لاستيراد وتوزيع المنتجات الغذائية عالية الجودة، لضمان حصول عملائنا دائمًا على أفضل مذاق ونضارة وقيمة.">
+                                    Fattal Group has been dedicated to delivering high-quality food products to the Syrian market. With strong partnerships and exclusive agency agreements with leading international brands, we have established ourselves as a reliable partner for importing and distributing high-quality food products to ensure our customers always have access to the best in taste, freshness, and value.
+                                </p>
+                            </div>
+                            
+                            <div class="text-reveal">
+                                <p data-en="Our passion for food and guided by professionalism, innovation, and customer satisfaction drive us to continuously expand our portfolio, adapt to evolving consumer needs, and set new standards in the food trading industry. From our shelves to your home, we make sure every product we deliver carries our promise of quality and trust." data-ar="شغفنا بالطعام، واسترشادنا بالاحترافية والابتكار ورضا العملاء، يدفعنا إلى توسيع نطاق أعمالنا باستمرار، ومواكبة احتياجات المستهلكين المتطورة، ووضع معايير جديدة في قطاع تجارة الأغذية. من رفوفنا إلى منازلكم، نضمن أن كل منتج نقدمه يحمل وعدنا بالجودة والثقة.">
+                                    Our passion for food and guided by professionalism, innovation, and customer satisfaction drive us to continuously expand our portfolio, adapt to evolving consumer needs, and set new standards in the food trading industry. From our shelves to your home, we make sure every product we deliver carries our promise of quality and trust.
+                                </p>
+                            </div>
                         </div>
                         
-                        <div class="callout-box">
-                            <h4 data-en="Our Vision" data-ar="رؤيتنا">Our Vision</h4>
-                            <p data-en="To be the leading provider of premium food products in Syria and the region — a symbol of quality, trust, and innovation in every household." data-ar="أن نكون المزود الرائد للمنتجات الغذائية المتميزة في سوريا والمنطقة — رمزًا للجودة والثقة والابتكار في كل منزل.">To be the leading provider of premium food products in Syria and the region — a symbol of quality, trust, and innovation in every household.</p>
+                        <!-- Floating Stats -->
+                        <div class="floating-stats">
+                            <div class="stat-item" data-delay="0.1s">
+                                <div class="stat-number">1965</div>
+                                <div class="stat-label" data-en="Founded" data-ar="تأسست">Founded</div>
+                            </div>
+                            <div class="stat-item" data-delay="0.2s">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-label" data-en="Years" data-ar="سنة">Years</div>
+                            </div>
+                            <div class="stat-item" data-delay="0.3s">
+                                <div class="stat-number">9</div>
+                                <div class="stat-label" data-en="Brands" data-ar="ماركة">Brands</div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="about-goals">
-                        <h4 data-en="Our Goals" data-ar="أهدافنا">Our Goals</h4>
-                        <ul>
-                            <li data-en="To continuously expand our product portfolio with trusted global brands." data-ar="توسيع أعمالنا باستمرار من خلال التعاون مع العلامات التجارية العالمية الموثوقة.">To continuously expand our product portfolio with trusted global brands.</li>
-                            <li data-en="To strengthen our market leadership through innovation and excellence in service." data-ar="تعزيز ريادتنا في السوق عبر الابتكار والتميّز في الخدمة.">To strengthen our market leadership through innovation and excellence in service.</li>
-                            <li data-en="To build long-term partnerships with suppliers, retailers, and consumers." data-ar="بناء شراكات طويلة الأمد مع الموردين وتجار التجزئة والمستهلكين.">To build long-term partnerships with suppliers, retailers, and consumers.</li>
-                            <li data-en="To contribute to the growth and modernization of the Syrian food sector." data-ar="تقديم دور الفعال في نمو وتحديث قطاع الأغذية في سوريا.">To contribute to the growth and modernization of the Syrian food sector.</li>
-                        </ul>
+                    <!-- Mission & Vision Cards -->
+                    <div class="mission-vision-grid">
+                        <div class="mission-card card-reveal">
+                            <div class="card-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <div class="card-content">
+                                <h4 data-en="Our Mission" data-ar="مهمتنا">Our Mission</h4>
+                                <p data-en="To connect global food brands with local consumers by importing, marketing, and distributing superior-quality products that enrich everyday life, while upholding our values of integrity, partnership, and customer satisfaction." data-ar="ربط العلامات التجارية الغذائية العالمية بالمستهلك المحلي من خلال استيراد وتسويق وتوزيع منتجات عالية الجودة تُثري الحياة اليومية، مع التمسك بقيمنا في النزاهة والشراكة ورضا العملاء.">To connect global food brands with local consumers by importing, marketing, and distributing superior-quality products that enrich everyday life, while upholding our values of integrity, partnership, and customer satisfaction.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="vision-card card-reveal">
+                            <div class="card-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="card-content">
+                                <h4 data-en="Our Vision" data-ar="رؤيتنا">Our Vision</h4>
+                                <p data-en="To be the leading provider of premium food products in Syria and the region — a symbol of quality, trust, and innovation in every household." data-ar="أن نكون المزود الرائد للمنتجات الغذائية المتميزة في سوريا والمنطقة — رمزًا للجودة والثقة والابتكار في كل منزل.">To be the leading provider of premium food products in Syria and the region — a symbol of quality, trust, and innovation in every household.</p>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="about-values">
-                        <h4 data-en="Our Values" data-ar="قيمنا">Our Values</h4>
-                        <ul>
-                            <li data-en="Quality: We never compromise on the standards of the products we deliver." data-ar="الجودة: لا نساوم أبدًا على معايير جودة المنتجات التي نقدمها.">Quality: We never compromise on the standards of the products we deliver.</li>
-                            <li data-en="Integrity: We act with honesty and transparency in all our relationships." data-ar="النزاهة: نتصرف بأمانة وشفافية في جميع تعاملاتنا.">Integrity: We act with honesty and transparency in all our relationships.</li>
-                            <li data-en="Customer Focus: Our customers are at the heart of everything we do." data-ar="تركيزنا على العميل: عملاؤنا هم محور كل ما نقوم به.">Customer Focus: Our customers are at the heart of everything we do.</li>
-                            <li data-en="Innovation: We embrace change and seek new ways to add value." data-ar="الابتكار: نتبنى التغيير ونبحث دائمًا عن طرق جديدة لإضافة القيمة.">Innovation: We embrace change and seek new ways to add value.</li>
-                            <li data-en="Teamwork: We believe in the power of collaboration to achieve shared success." data-ar="العمل الجماعي: نؤمن بقوة التعاون لتحقيق النجاح المشترك.">Teamwork: We believe in the power of collaboration to achieve shared success.</li>
-                            <li data-en="Commitment: We honor our promises and deliver on our word — every time." data-ar="الالتزام: نفي بوعودنا ونلتزم بكلمتنا.">Commitment: We honor our promises and deliver on our word — every time.</li>
-                        </ul>
+                    <!-- Goals & Values Section -->
+                    <div class="goals-values-section">
+                        <div class="goals-section">
+                            <div class="section-header-mini">
+                                <div class="icon-wrapper">
+                                    <i class="fas fa-target"></i>
+                                </div>
+                                <h4 data-en="Our Goals" data-ar="أهدافنا">Our Goals</h4>
+                            </div>
+                            <div class="goals-list">
+                                <div class="goal-item" data-delay="0.1s">
+                                    <div class="goal-icon">
+                                        <i class="fas fa-expand-arrows-alt"></i>
+                                    </div>
+                                    <p data-en="To continuously expand our product portfolio with trusted global brands." data-ar="توسيع أعمالنا باستمرار من خلال التعاون مع العلامات التجارية العالمية الموثوقة.">To continuously expand our product portfolio with trusted global brands.</p>
+                                </div>
+                                <div class="goal-item" data-delay="0.2s">
+                                    <div class="goal-icon">
+                                        <i class="fas fa-crown"></i>
+                                    </div>
+                                    <p data-en="To strengthen our market leadership through innovation and excellence in service." data-ar="تعزيز ريادتنا في السوق عبر الابتكار والتميّز في الخدمة.">To strengthen our market leadership through innovation and excellence in service.</p>
+                                </div>
+                                <div class="goal-item" data-delay="0.3s">
+                                    <div class="goal-icon">
+                                        <i class="fas fa-handshake"></i>
+                                    </div>
+                                    <p data-en="To build long-term partnerships with suppliers, retailers, and consumers." data-ar="بناء شراكات طويلة الأمد مع الموردين وتجار التجزئة والمستهلكين.">To build long-term partnerships with suppliers, retailers, and consumers.</p>
+                                </div>
+                                <div class="goal-item" data-delay="0.4s">
+                                    <div class="goal-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <p data-en="To contribute to the growth and modernization of the Syrian food sector." data-ar="تقديم دور الفعال في نمو وتحديث قطاع الأغذية في سوريا.">To contribute to the growth and modernization of the Syrian food sector.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="values-section">
+                            <div class="section-header-mini">
+                                <div class="icon-wrapper">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <h4 data-en="Our Values" data-ar="قيمنا">Our Values</h4>
+                            </div>
+                            <div class="values-grid">
+                                <div class="value-item" data-delay="0.1s">
+                                    <div class="value-icon">
+                                        <i class="fas fa-award"></i>
+                                    </div>
+                                    <div class="value-content">
+                                        <h5 data-en="Quality" data-ar="الجودة">Quality</h5>
+                                        <p data-en="We never compromise on the standards of the products we deliver." data-ar="لا نساوم أبدًا على معايير جودة المنتجات التي نقدمها.">We never compromise on the standards of the products we deliver.</p>
+                                    </div>
+                                </div>
+                                <div class="value-item" data-delay="0.2s">
+                                    <div class="value-icon">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <div class="value-content">
+                                        <h5 data-en="Integrity" data-ar="النزاهة">Integrity</h5>
+                                        <p data-en="We act with honesty and transparency in all our relationships." data-ar="نتصرف بأمانة وشفافية في جميع تعاملاتنا.">We act with honesty and transparency in all our relationships.</p>
+                                    </div>
+                                </div>
+                                <div class="value-item" data-delay="0.3s">
+                                    <div class="value-icon">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="value-content">
+                                        <h5 data-en="Customer Focus" data-ar="تركيزنا على العميل">Customer Focus</h5>
+                                        <p data-en="Our customers are at the heart of everything we do." data-ar="عملاؤنا هم محور كل ما نقوم به.">Our customers are at the heart of everything we do.</p>
+                                    </div>
+                                </div>
+                                <div class="value-item" data-delay="0.4s">
+                                    <div class="value-icon">
+                                        <i class="fas fa-lightbulb"></i>
+                                    </div>
+                                    <div class="value-content">
+                                        <h5 data-en="Innovation" data-ar="الابتكار">Innovation</h5>
+                                        <p data-en="We embrace change and seek new ways to add value." data-ar="نتبنى التغيير ونبحث دائمًا عن طرق جديدة لإضافة القيمة.">We embrace change and seek new ways to add value.</p>
+                                    </div>
+                                </div>
+                                <div class="value-item" data-delay="0.5s">
+                                    <div class="value-icon">
+                                        <i class="fas fa-users-cog"></i>
+                                    </div>
+                                    <div class="value-content">
+                                        <h5 data-en="Teamwork" data-ar="العمل الجماعي">Teamwork</h5>
+                                        <p data-en="We believe in the power of collaboration to achieve shared success." data-ar="نؤمن بقوة التعاون لتحقيق النجاح المشترك.">We believe in the power of collaboration to achieve shared success.</p>
+                                    </div>
+                                </div>
+                                <div class="value-item" data-delay="0.6s">
+                                    <div class="value-icon">
+                                        <i class="fas fa-handshake"></i>
+                                    </div>
+                                    <div class="value-content">
+                                        <h5 data-en="Commitment" data-ar="الالتزام">Commitment</h5>
+                                        <p data-en="We honor our promises and deliver on our word — every time." data-ar="نفي بوعودنا ونلتزم بكلمتنا.">We honor our promises and deliver on our word — every time.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
+                <!-- Sidebar -->
                 <div class="about-sidebar">
-                    <div class="about-image-placeholder">
-                        <div class="image-caption">
-                            <h4 data-en="Our Heritage" data-ar="تراثنا">Our Heritage</h4>
-                            <p data-en="Five decades of excellence in food trading" data-ar="خمسة عقود من التميز في تجارة الأغذية">Five decades of excellence in food trading</p>
+                    <!-- Heritage Card -->
+                    <div class="heritage-card card-reveal">
+                        <div class="heritage-image">
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h4 data-en="Our Heritage" data-ar="تراثنا">Our Heritage</h4>
+                                    <p data-en="Five decades of excellence in food trading" data-ar="خمسة عقود من التميز في تجارة الأغذية">Five decades of excellence in food trading</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="achievement-highlights">
-                        <h4 data-en="Key Achievements" data-ar="الإنجازات الرئيسية">Key Achievements</h4>
-                        <ul>
-                            <li data-en="Established in 1965" data-ar="تأسست عام 1965">Established in 1965</li>
-                            <li data-en="9 International Brands" data-ar="9 علامات تجارية عالمية">9 International Brands</li>
-                            <li data-en="1000+ Products" data-ar="أكثر من 1000 منتج">1000+ Products</li>
-                            <li data-en="Nationwide Distribution" data-ar="توزيع على مستوى البلاد">Nationwide Distribution</li>
-                        </ul>
+                    <!-- Achievements Card -->
+                    <div class="achievements-card card-reveal">
+                        <div class="card-header">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h4 data-en="Key Achievements" data-ar="الإنجازات الرئيسية">Key Achievements</h4>
+                        </div>
+                        <div class="achievements-list">
+                            <div class="achievement-item" data-delay="0.1s">
+                                <div class="achievement-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="achievement-content">
+                                    <h5 data-en="Established in 1965" data-ar="تأسست عام 1965">Established in 1965</h5>
+                                    <p data-en="Over 5 decades of experience" data-ar="أكثر من 5 عقود من الخبرة">Over 5 decades of experience</p>
+                                </div>
+                            </div>
+                            <div class="achievement-item" data-delay="0.2s">
+                                <div class="achievement-icon">
+                                    <i class="fas fa-tags"></i>
+                                </div>
+                                <div class="achievement-content">
+                                    <h5 data-en="9 International Brands" data-ar="9 علامات تجارية عالمية">9 International Brands</h5>
+                                    <p data-en="Trusted partnerships" data-ar="شراكات موثوقة">Trusted partnerships</p>
+                                </div>
+                            </div>
+                            <div class="achievement-item" data-delay="0.3s">
+                                <div class="achievement-icon">
+                                    <i class="fas fa-boxes"></i>
+                                </div>
+                                <div class="achievement-content">
+                                    <h5 data-en="1000+ Products" data-ar="أكثر من 1000 منتج">1000+ Products</h5>
+                                    <p data-en="Diverse portfolio" data-ar="محفظة متنوعة">Diverse portfolio</p>
+                                </div>
+                            </div>
+                            <div class="achievement-item" data-delay="0.4s">
+                                <div class="achievement-icon">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                </div>
+                                <div class="achievement-content">
+                                    <h5 data-en="Nationwide Distribution" data-ar="توزيع على مستوى البلاد">Nationwide Distribution</h5>
+                                    <p data-en="Reaching every corner" data-ar="نصل لكل زاوية">Reaching every corner</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -250,7 +554,7 @@
                                 <img src="../ماركاتنا/بيكراتي فاكتوري.svg" alt="بيكراتي" />
                             </div>
                             <div class="brand-info">
-                                <h3 class="brand-name">بيكراتي</h3>
+                                <h3 class="brand-name" data-en="Bikrati" data-ar="بيكراتي">بيكراتي</h3>
                                 <p class="brand-tagline" data-en="Premium Bakery Products" data-ar="منتجات مخابز متميزة">Premium Bakery Products</p>
                             </div>
                         </div>
@@ -263,7 +567,7 @@
                                 <img src="../ماركاتنا/delufood logo.svg" alt="ديلوفوود" />
                             </div>
                             <div class="brand-info">
-                                <h3 class="brand-name">ديلوفوود</h3>
+                                <h3 class="brand-name" data-en="Delovood" data-ar="ديلوفوود">ديلوفوود</h3>
                                 <p class="brand-tagline" data-en="Natural Food Products" data-ar="منتجات غذائية طبيعية">Natural Food Products</p>
                             </div>
                         </div>
@@ -276,7 +580,7 @@
                                 <img src="../ماركاتنا/Fattal Food logo.svg" alt="فتال فوود" />
                             </div>
                             <div class="brand-info">
-                                <h3 class="brand-name">فتال فوود</h3>
+                                <h3 class="brand-name" data-en="Fattal Food" data-ar="فتال فوود">فتال فوود</h3>
                                 <p class="brand-tagline" data-en="Quality Food Solutions" data-ar="حلول غذائية عالية الجودة">Quality Food Solutions</p>
                             </div>
                         </div>
@@ -289,7 +593,7 @@
                                 <img src="../ماركاتنا/Ingredient world - logo.svg" alt="عالم المواد" />
                             </div>
                             <div class="brand-info">
-                                <h3 class="brand-name">عالم المواد</h3>
+                                <h3 class="brand-name" data-en="Ingredient World" data-ar="عالم المواد">عالم المواد</h3>
                                 <p class="brand-tagline" data-en="Global Ingredients" data-ar="مكونات عالمية">Global Ingredients</p>
                             </div>
                         </div>
@@ -302,7 +606,7 @@
                                 <img src="../ماركاتنا/khayrat blady logo.svg" alt="خيرات بلادي" />
                             </div>
                             <div class="brand-info">
-                                <h3 class="brand-name">خيرات بلادي</h3>
+                                <h3 class="brand-name" data-en="Khayrat Blady" data-ar="خيرات بلادي">خيرات بلادي</h3>
                                 <p class="brand-tagline" data-en="Local Produce" data-ar="منتجات محلية">Local Produce</p>
                             </div>
                         </div>
@@ -315,7 +619,7 @@
                                 <i class="fas fa-cheese"></i>
                             </div>
                             <div class="brand-info">
-                                <h3 class="brand-name">فتال ديري</h3>
+                                <h3 class="brand-name" data-en="Fattal Dairy" data-ar="فتال ديري">فتال ديري</h3>
                                 <p class="brand-tagline" data-en="Dairy Products" data-ar="منتجات الألبان">Dairy Products</p>
                             </div>
                         </div>
@@ -328,7 +632,7 @@
                                 <i class="fas fa-candy-cane"></i>
                             </div>
                             <div class="brand-info">
-                                <h3 class="brand-name">ديلوبار</h3>
+                                <h3 class="brand-name" data-en="Delobar" data-ar="ديلوبار">ديلوبار</h3>
                                 <p class="brand-tagline" data-en="Confectionery" data-ar="الحلويات">Confectionery</p>
                             </div>
                         </div>
@@ -341,7 +645,7 @@
                                 <i class="fas fa-apple-alt"></i>
                             </div>
                             <div class="brand-info">
-                                <h3 class="brand-name">فيتا دورو</h3>
+                                <h3 class="brand-name" data-en="Vita Duro" data-ar="فيتا دورو">فيتا دورو</h3>
                                 <p class="brand-tagline" data-en="Fresh Produce" data-ar="منتجات طازجة">Fresh Produce</p>
                             </div>
                         </div>
@@ -694,7 +998,6 @@
                 <div class="footer-section main">
                     <div class="footer-logo">
                         <img src="logo.png" alt="Fattal Group Logo" class="logo">
-                        <span class="brand-name">Fattal Group</span>
                     </div>
                     <p class="footer-description" data-en="Bringing Quality Food to Every Table Since 1965" data-ar="منذ عام 1965 ، نضع الغذاء عالي الجودة على كل مائدة">Bringing Quality Food to Every Table Since 1965</p>
                     <div class="footer-social">
