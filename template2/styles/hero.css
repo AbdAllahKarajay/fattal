@@ -141,11 +141,16 @@
 .featured-quote::before {
     content: '"';
     position: absolute;
-    top: 20px;
-    left: 30px;
+    top: 0;
+    right: 30px;
     font-size: 4rem;
     opacity: 0.3;
     font-family: var(--font-english);
+}
+
+[dir="rtl"] .featured-quote::before {
+    right: auto;
+    left: 30px;
 }
 
 .featured-quote blockquote p {

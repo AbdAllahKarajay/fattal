@@ -68,7 +68,7 @@ function updateBrandLogo(brandData) {
     if (brandData.logo.startsWith('fas fa-') || brandData.logo.startsWith('fab fa-')) {
         // FontAwesome icon
         logoContainer.innerHTML = `
-            <i class="${brandData.logo}" style="font-size: 4rem; margin-bottom: 20px; color: var(--primary-color);"></i>
+            <i class="${brandData.logo}" style="font-size: 4rem; color: var(--primary-color);"></i>
             <h2>${brandData.name[document.documentElement.getAttribute('lang') || 'en']}</h2>
         `;
     } else {

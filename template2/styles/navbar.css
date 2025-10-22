@@ -23,39 +23,30 @@
     gap: 30px;
 }
 
-/* RTL Support */
 [dir="rtl"] .nav-container {
     grid-template-columns: auto 1fr auto;
 }
 
-[dir="rtl"] .nav-right {
-    justify-content: flex-start;
-    order: -1;
+[dir="rtl"] .language-switcher {
+    margin-left: 0;
+    margin-right: 20px;
+    flex-direction: row-reverse;
 }
 
-[dir="rtl"] .nav-left {
-    justify-content: flex-end;
-    order: 1;
+[dir="rtl"] .theme-toggle {
+    margin-left: 0;
+    margin-right: 10px;
 }
 
-.nav-left,
-.nav-center,
-.nav-right {
+.nav-center {
     display: flex;
     align-items: center;
     gap: 25px;
 }
 
-.nav-left {
-    justify-content: flex-start;
-}
 
 .nav-center {
     justify-content: center;
-}
-
-.nav-right {
-    justify-content: flex-end;
 }
 
 .nav-logo {
@@ -112,17 +103,6 @@
     margin-left: 20px;
 }
 
-/* RTL Support for language switcher */
-[dir="rtl"] .language-switcher {
-    margin-left: 0;
-    margin-right: 20px;
-}
-
-/* RTL Support for theme toggle */
-[dir="rtl"] .theme-toggle {
-    margin-left: 0;
-    margin-right: 10px;
-}
 
 /* Theme Toggle Button */
 .theme-toggle {
@@ -168,6 +148,8 @@
 }
 
 .hamburger {
+    justify-content: flex-end;
+    align-items: end;
     display: none;
     flex-direction: column;
     cursor: pointer;
@@ -187,4 +169,11 @@
 .brand-header:focus {
     outline: 2px solid var(--accent-color);
     outline-offset: 2px;
+}
+
+/* Hide language selector on small screens */
+@media (max-width: 768px) {
+    .language-switcher {
+        display: none;
+    }
 }

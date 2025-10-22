@@ -39,7 +39,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 20px;
-    box-shadow: var(--shadow-medium);
+    box-shadow: var(--shadow-light);
 }
 
 .brands-slider .slider-track {
@@ -59,7 +59,6 @@
 
 .brands-slider .brand-card:hover {
     transform: scale(1.02);
-    box-shadow: var(--shadow-heavy);
 }
 
 .brands-slider .brand-card-inner {
