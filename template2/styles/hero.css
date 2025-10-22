@@ -1,0 +1,223 @@
+/* Hero Component */
+.hero {
+    padding: 100px 0 100px;
+    background: var(--cream);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-container {
+    max-width: 1600px;
+    margin: 60px auto 0 auto;
+    padding: 0 60px;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 80px;
+    margin-bottom: 80px;
+}
+
+.hero-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    line-height: 1.1;
+    font-family: var(--font-english);
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.hero-description {
+    font-size: 1.4rem;
+    color: var(--text-light);
+    margin-bottom: 50px;
+    line-height: 1.8;
+    max-width: 600px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 20px 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: var(--transition-medium);
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-heavy);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 3px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-heavy);
+}
+
+.hero-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.featured-stats {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-medium);
+}
+
+.stat-highlight {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.stat-highlight:last-child {
+    margin-bottom: 0;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-family: var(--font-english);
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.featured-quote {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.featured-quote::before {
+    content: '"';
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 4rem;
+    opacity: 0.3;
+    font-family: var(--font-english);
+}
+
+.featured-quote blockquote p {
+    font-size: 1.3rem;
+    font-style: italic;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.featured-quote cite {
+    font-size: 1rem;
+    opacity: 0.8;
+    font-style: normal;
+}
+
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+}
+
+.hero-image-placeholder {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-heavy);
+    overflow: hidden;
+}
+
+.image-overlay {
+    text-align: center;
+    color: var(--white);
+}
+
+.image-overlay h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-family: var(--font-english);
+}
+
+.image-overlay p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Animation */
+.hero-content,
+.hero-visual,
+.about-text,
+.about-visual {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

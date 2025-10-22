@@ -1,0 +1,35 @@
+/* Layout containers and shared spacing */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-english);
+    line-height: 1.7;
+    color: var(--text-dark);
+    background-color: var(--white);
+    font-size: 18px;
+    overflow-x: hidden;
+}
+
+.container,
+.nav-container,
+.hero-container,
+.about-container,
+.brands-container,
+.contact-container,
+.footer-container,
+.brand-hero-container,
+.brand-features-container,
+.product-categories-container,
+.contact-cta-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: var(--container-padding);
+}
+
+.section-header {
+    text-align: center;
+}
+
+

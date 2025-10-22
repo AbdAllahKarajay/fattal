@@ -1,0 +1,190 @@
+/* Navigation Component */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--white);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--primary-color);
+    opacity: 0.95;
+    transition: var(--transition-medium);
+}
+
+.nav-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    height: 60px;
+    gap: 30px;
+}
+
+/* RTL Support */
+[dir="rtl"] .nav-container {
+    grid-template-columns: auto 1fr auto;
+}
+
+[dir="rtl"] .nav-right {
+    justify-content: flex-start;
+    order: -1;
+}
+
+[dir="rtl"] .nav-left {
+    justify-content: flex-end;
+    order: 1;
+}
+
+.nav-left,
+.nav-center,
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-left {
+    justify-content: flex-start;
+}
+
+.nav-center {
+    justify-content: center;
+}
+
+.nav-right {
+    justify-content: flex-end;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    height: 35px;
+    width: auto;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-family: var(--font-english);
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    transition: var(--transition-fast);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: var(--transition-fast);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.language-switcher {
+    display: flex;
+    gap: 8px;
+    margin-left: 20px;
+}
+
+/* RTL Support for language switcher */
+[dir="rtl"] .language-switcher {
+    margin-left: 0;
+    margin-right: 20px;
+}
+
+/* RTL Support for theme toggle */
+[dir="rtl"] .theme-toggle {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: 10px;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.lang-btn {
+    padding: 8px 14px;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    transition: var(--transition-fast);
+    font-weight: 600;
+}
+
+.lang-btn.active {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.lang-btn:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background: var(--primary-color);
+    margin: 3px 0;
+    transition: var(--transition-fast);
+}
+
+/* Focus styles for accessibility */
+.nav-link:focus,
+.lang-btn:focus,
+.brand-header:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}

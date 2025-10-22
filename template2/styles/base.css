@@ -1,0 +1,76 @@
+/* Base reset and design tokens */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette - Blue Jeans Inspired */
+    --primary-color: #1e3a8a;
+    --secondary-color: #3b82f6;
+    --accent-color: #60a5fa;
+    --light-blue: #93c5fd;
+    --cream: #f8fafc;
+    --dark-gray: #1e293b;
+    --light-gray: #f1f5f9;
+    --white: #ffffff;
+    --black: #000000;
+    --text-shadow: #000000;
+    --text-dark: #0f172a;
+    --text-light: #475569;
+
+    /* Typography */
+    --font-english: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-arabic: 'Cairo', Arial, sans-serif;
+
+    /* Spacing */
+    --section-padding: 120px 0;
+    --container-padding: 0 60px;
+
+    /* Shadows */
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 32px rgba(0, 0, 0, 0.16);
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* Dark theme colors */
+:root[data-theme="dark"] {
+    --primary-color: #60a5fa;
+    --secondary-color: #93c5fd;
+    --accent-color: #3b82f6;
+    --light-blue: #1e3a8a;
+    --cream: #1e293b;
+    --white: #0f172a;
+    --black: #ffffff;
+    --text-shadow: #ffffff;
+    --light-gray: #334155;
+    --dark-gray: #e2e8f0;
+    --text-dark: #f1f5f9;
+    --text-light: #94a3b8;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-heavy: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* Dark theme navbar specific styles */
+:root[data-theme="dark"] .navbar {
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom: 1px solid var(--primary-color);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+

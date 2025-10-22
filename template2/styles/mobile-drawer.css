@@ -1,7 +1,3 @@
-@import url('./style.css');
-
-
-
 /* Mobile Drawer Styles */
 .mobile-drawer {
     position: fixed;
@@ -74,7 +70,7 @@
     font-size: 1.2rem;
     font-weight: 700;
     color: var(--primary-color);
-    font-family: var(--font-primary);
+    font-family: var(--font-english);
 }
 
 .drawer-close {

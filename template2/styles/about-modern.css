@@ -89,7 +89,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 30px;
-    font-family: var(--font-primary);
+    font-family: var(--font-english);
     text-transform: uppercase;
     letter-spacing: -2px;
     animation: fadeInUp 0.8s ease-out 0.2s both;
@@ -222,7 +222,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 10px;
-    font-family: var(--font-primary);
+    font-family: var(--font-english);
 }
 
 .stat-label {
@@ -303,7 +303,7 @@
     color: var(--primary-color);
     margin-bottom: 20px;
     font-weight: 600;
-    font-family: var(--font-primary);
+    font-family: var(--font-english);
 }
 
 #about .card-content p {
@@ -369,7 +369,7 @@
     font-size: 1.8rem;
     color: var(--primary-color);
     font-weight: 600;
-    font-family: var(--font-primary);
+    font-family: var(--font-english);
 }
 
 /* Goals List */
@@ -575,7 +575,7 @@
     font-size: 1.8rem;
     margin-bottom: 15px;
     font-weight: 600;
-    font-family: var(--font-primary);
+    font-family: var(--font-english);
 }
 
 .overlay-content p {

@@ -1203,22 +1203,7 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(el);
     });
 
-    // Navbar scroll effect
-    let lastScrollTop = 0;
-    window.addEventListener('scroll', function () {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const navbar = document.querySelector('.navbar');
-
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            // Scrolling down
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            // Scrolling up
-            navbar.style.transform = 'translateY(0)';
-        }
-
-        lastScrollTop = scrollTop;
-    });
+    // Navbar always visible - scroll behavior removed
 
     // Magazine-style hover effects
     const magazineElements = document.querySelectorAll('.callout-box, .contact-item, .stat-highlight');

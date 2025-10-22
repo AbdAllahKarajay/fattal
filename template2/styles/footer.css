@@ -1,0 +1,133 @@
+/* Footer Component */
+.footer {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 100px 0 40px;
+}
+
+.footer-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+
+.footer-section h4 {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.footer-logo .logo {
+    height: 50px;
+    width: auto;
+    opacity: 1;
+}
+
+.footer-logo .brand-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.footer-description {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 15px;
+}
+
+.footer .social-link {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: var(--transition-fast);
+    font-size: 1.2rem;
+}
+
+.footer .social-link:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 15px;
+}
+
+.footer-section ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    font-size: 1rem;
+}
+
+.footer-section ul li a:hover {
+    color: var(--white);
+}
+
+.footer .newsletter-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.footer .newsletter-form input {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.footer .newsletter-form button {
+    padding: 15px 20px;
+    background: var(--secondary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    font-size: 1rem;
+}
+
+.footer .newsletter-form button:hover {
+    background: var(--accent-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0.8;
+    font-size: 1rem;
+}

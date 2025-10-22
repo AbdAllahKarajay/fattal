@@ -1,0 +1,194 @@
+/* Responsive breakpoints and shared media queries */
+
+:root {
+    --bp-xl: 1400px;
+    --bp-lg: 1200px;
+    --bp-md: 992px;
+    --bp-sm: 768px;
+    --bp-xs: 480px;
+}
+
+/* Large screens */
+@media (max-width: 1400px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .section-title {
+        font-size: 4rem;
+    }
+}
+
+/* Desktop */
+@media (max-width: 1200px) {
+    .nav-container {
+        padding: 0 30px;
+        gap: 20px;
+        height: 55px;
+    }
+    
+    .nav-center,
+    .nav-right {
+        gap: 30px;
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-center,
+    .nav-right {
+        display: none;
+    }
+    
+    .nav-container {
+        grid-template-columns: auto 1fr auto;
+        padding: 0 20px;
+        height: 50px;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .section-title {
+        font-size: 3rem;
+    }
+    
+    .about-callouts {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .brand-details {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .nav-container,
+    .hero-container,
+    .about-container,
+    .brands-container,
+    .contact-container,
+    .footer-container {
+        padding: 0 15px;
+    }
+    
+    .nav-container {
+        height: 45px;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .contact-form {
+        padding: 30px 20px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .hero-description {
+        font-size: 1.2rem;
+    }
+    
+    .brand-header {
+        padding: 20px;
+    }
+    
+    .brand-details {
+        padding: 20px;
+    }
+}
+
+/* RTL Support */
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] .hero-content,
+[dir="rtl"] .about-content,
+[dir="rtl"] .contact-content {
+    direction: rtl;
+}
+
+[dir="rtl"] .nav-right {
+    justify-content: flex-start;
+    order: -1;
+}
+
+[dir="rtl"] .nav-left {
+    justify-content: flex-end;
+    order: 1;
+}
+
+[dir="rtl"] .language-switcher {
+    margin-left: 0;
+    margin-right: 20px;
+}
+
+[dir="rtl"] .theme-toggle {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+[dir="rtl"] .footer-content {
+    text-align: right;
+}
